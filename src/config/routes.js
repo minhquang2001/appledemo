@@ -1,0 +1,10 @@
+const routes = {
+    home: '/',
+    iphone: '/iphone',
+    profile: '/@:nickname',
+    upload: '/upload',
+    search: '/search',
+    live: '/live',
+};
+
+export default routes;

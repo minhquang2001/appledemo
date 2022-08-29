@@ -1,0 +1,1 @@
+export { bannerHome } from './banner'

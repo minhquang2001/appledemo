@@ -1,0 +1,68 @@
+.heading {
+    margin-bottom: 24px;
+    margin-top: 60px;
+    text-align: center;
+    cursor: default;
+}
+
+.wrapper {
+    background-color: #fff;
+    padding-bottom: 48px;
+    border-radius: 16px;
+    margin: 0 12px;
+    border: 1px solid #02010100;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.04);
+    transition: background-color 0.3s, border 0.2s, border-radius 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        cursor: pointer;
+        border: 1px solid #02010100;
+        box-shadow: 1px 1px 28px 0px rgb(0, 0, 0, 0.12);
+    }
+}
+
+.background-product {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-top: 100%;
+}
+
+.product-name {
+    margin: 4px 32px 16px 32px;
+    font-size: 2rem;
+    font-weight: 700;
+    height: 6rem;
+}
+
+.product-price {
+    margin: 0px 32px;
+    font-size: 1.8rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.wrap-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 48px;
+}
+
+.button-wrapper {
+    margin: 36px auto 0;
+}
+
+.button {
+    color: var(--primary);
+    background-color: var(--background-color);
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    padding: 12px 24px;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: var(--primary);
+        color: #fff;
+    }
+}

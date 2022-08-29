@@ -1,0 +1,51 @@
+.wrapper {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #515154;
+    transition: background-color 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    --white: #fff;
+}
+
+.inner {
+    width: 1440px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.logo-link {
+    width: 20%;
+}
+
+.list-wrap {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.list-product {
+    color: var(--white);
+    padding: 16px 32px;
+    line-height: 2;
+    font-size: 1.8rem;
+
+    transition: background-color 0.2s linear;
+
+    &:hover {
+        background-color: #3f3f3f;
+    }
+}
+
+.wrap-icon {
+    color: var(--white);
+    display: flex;
+    font-size: 2rem;
+    flex: 1;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.icon+.icon {
+    margin-left: 48px;
+}
