@@ -1,3 +1,6 @@
+.wrapper {
+    overflow: hidden;
+}
 .slideshowSlider {
     white-space: nowrap;
     transition: ease 1000ms;
@@ -10,17 +13,15 @@
 
 .slideshowDot {
     display: inline-block;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-
-  cursor: pointer;
-  margin: 15px 7px 0px;
-
-  background-color: #c4c4c4;
-  &.active {
-    background-color: red;
-  }
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 15px 8px 0px;
+    background-color: #c4c4c4;
+    &.active {
+        background-color: #999;
+    }
 }
 .slideshowDots {
     text-align: center;
