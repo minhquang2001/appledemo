@@ -1,1 +1,1 @@
-export { bannerHome } from './banner'
+export { bannerHome, bannerIphones, bannerIpads } from './banner'

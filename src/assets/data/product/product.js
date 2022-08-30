@@ -22,7 +22,90 @@ const iphones = [
         "name": "iPhone 11",
         "image": require('~/assets/images/iphone/iphone11green.webp'),
         "price": "10.690.000đ"
-    }
+    },{
+        "id": 5,
+        "name": "iPhone 13 256GB",
+        "image": require('~/assets/images/iphone/iphone13.webp'),
+        "price": "21.990.000đ"
+    },
+    {
+        "id": 6,
+        "name": "iPhone 13 512GB",
+        "image": require('~/assets/images/iphone/iphone13.webp'),
+        "price": "24.990.000đ"
+    },
+    {
+        "id": 7,
+        "name": "iPhone 11",
+        "image": require('~/assets/images/iphone/iphone11green.webp'),
+        "price": "12.190.000đ"
+    },
+    {
+        "id": 8,
+        "name": "iPhone 13 mini",
+        "image": require('~/assets/images/iphone/iphone13mini.png'),
+        "price": "17.690.000đ"
+    },
+    {
+        "id": 9,
+        "name": "iPhone 13 mini 256GB",
+        "image": require('~/assets/images/iphone/iphone13mini.png'),
+        "price": "19.990.000đ"
+    },
+    {
+        "id": 10,
+        "name": "iPhone 13 mini 512GB",
+        "image": require('~/assets/images/iphone/iphone13mini.png'),
+        "price": "21.990.000đ"
+    },
+    {
+        "id": 11,
+        "name": "iPhone 13 Pro",
+        "image": require('~/assets/images/iphone/iphone13promax.webp'),
+        "price": "24.490.000đ"
+    },
+    {
+        "id": 12,
+        "name": "iPhone 13 Pro 256GB",
+        "image": require('~/assets/images/iphone/iphone13promaxblue.png'),
+        "price": "26.990.000đ"
+    },
+    {
+        "id": 13,
+        "name": "iPhone 13 Pro 512GB",
+        "image": require('~/assets/images/iphone/iphone13promaxblue.png'),
+        "price": "32.990.000đ"
+    },
+    {
+        "id": 14,
+        "name": "iPhone 13 Pro 1TB",
+        "image": require('~/assets/images/iphone/iphone13promaxgold.png'),
+        "price": "37.990.000đ"
+    },
+    {
+        "id": 15,
+        "name": "iPhone SE (2022) 64GB",
+        "image": require('~/assets/images/iphone/iphonese2022.png'),
+        "price": "10.790.000đ"
+    },
+    {
+        "id": 16,
+        "name": "iPhone 12 128GB",
+        "image": require('~/assets/images/iphone/iphone12.webp'),
+        "price": "18.290.000đ"
+    },
+    {
+        "id": 17,
+        "name": "iPhone SE (2022) 128GB",
+        "image": require('~/assets/images/iphone/iphonese2022.png'),
+        "price": "11.990.000đ"
+    },
+    {
+        "id": 18,
+        "name": "iPhone SE (2022) 256GB",
+        "image": require('~/assets/images/iphone/iphonese2022.png'),
+        "price": "14.990.000đ"
+    },
 ]
 
 const ipads = [
@@ -40,7 +123,7 @@ const ipads = [
     },
     {
         "id": 3,
-        "name": "iPad gen 9 (2021)",
+        "name": "iPad gen 9 10.2 inch Wi-Fi 64GB",
         "image": require('~/assets/images/ipad/ipadgen9.webp'),
         "price": "8.390.000đ"
     },
@@ -49,6 +132,90 @@ const ipads = [
         "name": "iPad mini 6 (2021)",
         "image": require('~/assets/images/ipad/ipadmini6.webp'),
         "price": "12.990.000đ"
+    },
+    {
+        "id": 5,
+        "name": "iPad Air 4 10.9 inch Wi-Fi 256GB",
+        "image": require('~/assets/images/ipad/ipadair4.webp'),
+        "price": "16.990.000đ"
+    },
+    {
+        "id": 6,
+        "name": "iPad Air 4 10.9 inch Wi-Fi + Cellular 64GB",
+        "image": require('~/assets/images/ipad/ipadair4.webp'),
+        "price": "14.990.000đ"
+    },
+    {
+        "id": 7,
+        "name": "iPad Air 4 10.9 inch Wi-Fi + Cellular 256GB",
+        "image": require('~/assets/images/ipad/ipadair4.webp'),
+        "price": "18.590.000đ"
+    },
+    {
+        "id": 8,
+        "name": "iPad gen 9 10.2 inch Wi-Fi 256GB",
+        "image": require('~/assets/images/ipad/ipadgen9.webp'),
+        "price": "12.990.000đ"
+    },
+    {
+        "id": 9,
+        "name": "iPad 9 10.2 inch Wi-Fi + Cellular 64GB",
+        "image": require('~/assets/images/ipad/ipadgen9.webp'),
+        "price": "11.790.000đ"
+    },
+    {
+        "id": 10,
+        "name": "iPad 9 10.2 inch Wi-Fi + Cellular 256GB",
+        "image": require('~/assets/images/ipad/ipadgen9.webp'),
+        "price": "15.190.000đ"
+    },
+    {
+        "id": 11,
+        "name": "iPad mini 6 WiFi 256GB",
+        "image": require('~/assets/images/ipad/ipadmini6.webp'),
+        "price": "16.690.000đ"
+    },
+    {
+        "id": 12,
+        "name": "iPad mini 6 WiFi + Cellular 64GB",
+        "image": require('~/assets/images/ipad/ipadmini6.webp'),
+        "price": "15.990.000đ"
+    },
+    {
+        "id": 13,
+        "name": "iPad mini 6 WiFi + Cellular 256GB",
+        "image": require('~/assets/images/ipad/ipadmini6.webp'),
+        "price": "19.590.000đ"
+    },
+    {
+        "id": 14,
+        "name": "iPad Pro 11 inch (M1, 2021)",
+        "image": require('~/assets/images/ipad/ipadprom1.11.webp'),
+        "price": "19.590.000đ"
+    },
+    {
+        "id": 15,
+        "name": "iPad Pro 12.9 inch (M1, 2021)",
+        "image": require('~/assets/images/ipad/ipadprom1.12.9.webp'),
+        "price": "23.990.000đ"
+    },
+    {
+        "id": 16,
+        "name": "iPad Air 5 Wi-Fi 256GB",
+        "image": require('~/assets/images/ipad/ipadair5.webp'),
+        "price": "18.490.000đ"
+    },
+    {
+        "id": 17,
+        "name": "iPad Air 5 Wi-Fi + Cellular 64GB",
+        "image": require('~/assets/images/ipad/ipadair5.webp'),
+        "price": "18.590.000đ"
+    },
+    {
+        "id": 18,
+        "name": "iPad Air 5 Wi-Fi + Cellular 256GB",
+        "image": require('~/assets/images/ipad/ipadair5.webp'),
+        "price": "22.990.000đ"
     },
 ]
 

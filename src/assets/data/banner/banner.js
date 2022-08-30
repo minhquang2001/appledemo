@@ -17,12 +17,32 @@ const bannerHome = [
     },
     {
         "id" : 5,
-        "images" : require('~/assets/images/banner/banner5.jpeg')
+        "images" : require('~/assets/images/banner/iphone2.jpeg')
     },
     {
         "id" : 6,
         "images" : require('~/assets/images/banner/banner6.jpeg')
     },
 ]
+const bannerIphones = [
+    {
+        "id" : 1,
+        "images" : require('~/assets/images/banner/iphone1.jpeg')
+    },
+    {
+        "id" : 2,
+        "images" : require('~/assets/images/banner/iphone2.jpeg')
+    },
+]
 
-export { bannerHome } 
+const bannerIpads = [
+    {
+        "id" : 1,
+        "images" : require('~/assets/images/banner/ipad1.jpeg')
+    },
+    {
+        "id" : 2,
+        "images" : require('~/assets/images/banner/ipad2.jpeg')
+    },
+]
+export { bannerHome, bannerIphones, bannerIpads } 

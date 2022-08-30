@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import styles from './Background.module.scss'
+import styles from './BackgroundHome.module.scss'
 import { useState, useRef, useEffect } from "react";
 import { bannerHome } from "~/assets/data/banner";
 

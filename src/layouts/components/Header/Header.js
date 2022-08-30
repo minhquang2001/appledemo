@@ -19,7 +19,7 @@ function Header() {
                 </Link>
                 <div className={cx('list-wrap')}>
                     <Link to={config.routes.iphone} className={cx('list-product')}>iPhone</Link>
-                    <Link to={config.routes.home} className={cx('list-product')}>iPad</Link>
+                    <Link to={config.routes.ipad} className={cx('list-product')}>iPad</Link>
                     <Link to={config.routes.home} className={cx('list-product')}>Macbook</Link>
                     <Link to={config.routes.home} className={cx('list-product')}>Watch</Link>
                     <Link to={config.routes.home} className={cx('list-product')}>Âm Thanh</Link>

@@ -8,12 +8,19 @@ import { Link } from "react-router-dom";
 const cx = classNames.bind(styles)
 
 function Mac() {
+    function ArrayNew(product) {
+        if (Number.isFinite(product.id) && product.id <= 4) {
+            return true
+        }
+        return false
+    } 
+    const Product = macs.filter(ArrayNew)
     return (
         <div>
             <h1 className={cx('heading')}>Mac</h1>
             <div className={cx('grid')}>
                 <div className={cx('grid__row')}>
-                    {macs.map((mac) =>
+                    {Product.map((mac) =>
                         <div className={cx('grid__column-3')} key={mac.id}>
                             <div className={cx('wrapper')}>
                                 <div className={cx('background-product')} style={{ backgroundImage: `url(${mac.image})` }}></div>

@@ -8,12 +8,19 @@ import { Link } from "react-router-dom";
 const cx = classNames.bind(styles)
 
 function Watch() {
+    function ArrayNew(product) {
+        if (Number.isFinite(product.id) && product.id <= 4) {
+            return true
+        }
+        return false
+    } 
+    const Product = watchs.filter(ArrayNew)
     return (
         <div>
             <h1 className={cx('heading')}>Watch</h1>
             <div className={cx('grid')}>
                 <div className={cx('grid__row')}>
-                    {watchs.map((watch) =>
+                    {Product.map((watch) =>
                         <div className={cx('grid__column-3')} key={watch.id}>
                             <div className={cx('wrapper')}>
                                 <div className={cx('background-product')} style={{ backgroundImage: `url(${watch.image})` }}></div>
