@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import { useState, useRef, useEffect } from "react";
-import styles from './BackgroundProduct.module.scss'
+import styles from './BackgroundProduct.module.scss';
 import { bannerIpads } from "~/assets/data/banner";
 
 const cx = classNames.bind(styles)
@@ -36,7 +36,7 @@ function BackgroundIpad() {
                     style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
                 >
                 {bannerIpads.map((banner, index) => 
-                    <img key= {index} className={cx('baIpad')} src={banner.images} alt='background' />
+                    <img key= {index} className={cx('background')} src={banner.images} alt='background' />
     
                 )}
                 </div>

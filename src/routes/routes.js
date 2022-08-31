@@ -7,6 +7,8 @@ import { HeaderProduct } from '~/layouts';
 import Home from '~/pages/Home';
 import Iphone from '~/pages/ItemsProduct/Iphone';
 import Ipad from '~/pages/ItemsProduct/Ipad';
+import Mac from '~/pages/ItemsProduct/Mac';
+
 
 // import Profile from '~/pages/Profile';
 // import Upload from '~/pages/Upload';
@@ -20,6 +22,8 @@ const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.iphone, component: Iphone, layout: HeaderProduct},
     { path: config.routes.ipad, component: Ipad, layout: HeaderProduct},
+    { path: config.routes.mac, component: Mac, layout: HeaderProduct},
+
 
     // { path: config.routes.live, component: Live },
     // { path: config.routes.profile, component: Profile },

@@ -1,9 +1,11 @@
 import classNames from "classnames/bind";
+import { Link } from "react-router-dom";
+
 import styles from "./ProductItems.module.scss"
 import { ipads } from "~/assets/data/product";
+import config from "~/config";
 
 
-import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles)
 
@@ -13,7 +15,7 @@ function Ipad() {
             return true
         }
         return false
-    } 
+    }
     const Product = ipads.filter(ArrayNew)
     return (
         <div>
@@ -33,7 +35,7 @@ function Ipad() {
                     )
                     }
                     <div className={cx('button-wrapper')}>
-                        <Link to='' className={cx('button')}>Xem tất cả</Link>
+                        <Link to={config.routes.ipad} className={cx('button')}>Xem tất cả</Link>
                     </div>
                 </div>
             </div>

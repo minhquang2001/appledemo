@@ -244,6 +244,174 @@ const macs = [
         "image": require('~/assets/images/mac/macbookprom1.png'),
         "price": "28.990.000đ"
     },
+    {
+        "id": 5,
+        "name": "MacBook Air M2 2022 (8GB RAM|256GB SSD)",
+        "image": require('~/assets/images/mac/macbookairm2silver.png'),
+        "price": "29.990.000đ"
+    },
+    {
+        "id": 6,
+        "name": "MacBook Air M2 2022 (8GB RAM|512GB SSD)",
+        "image": require('~/assets/images/mac/macbookairm2silver.png'),
+        "price": "36.490.000đ"
+    },
+    {
+        "id": 7,
+        "name": "MacBook Air M2 2022 (16GB RAM|256GB SSD)",
+        "image": require('~/assets/images/mac/macbookairm2silver.png'),
+        "price": "37.990.000đ"
+    },
+    {
+        "id": 8,
+        "name": "MacBook Air M2 2022 (16GB RAM|512GB SSD)",
+        "image": require('~/assets/images/mac/macbookairm2silver.png'),
+        "price": "43.990.000đ"
+    },
+    {
+        "id": 9,
+        "name": "Macbook Pro M2 2022 (8GB RAM)",
+        "image": require('~/assets/images/mac/macbookprom2.png'),
+        "price": "31.590.000đ"
+    },
+    {
+        "id": 10,
+        "name": "MacBook Pro 14 M1 Pro (14-Core/16GB/512GB)",
+        "image": require('~/assets/images/mac/macbookpro14silver.png'),
+        "price": "47.490.000đ"
+    },
+    {
+        "id": 11,
+        "name": "iMac M1 2021 24 inch (8-Core GPU/8GB/512GB)",
+        "image": require('~/assets/images/mac/imac24silver.jpeg'),
+        "price": "38.990.000đ"
+    },
+    {
+        "id": 12,
+        "name": "iMac 2020 21.5\" - MHK23 (3.6QC/8GB/ 256GB/RP555X-SOA)",
+        "image": require('~/assets/images/mac/imac2020.21inch.png'),
+        "price": "24.990.000đ"
+    },
+    {
+        "id": 13,
+        "name": "iMac 2020 21.5\" - MHK33 (3.0 6C/8GB/ 256GB/RP560X-SOA)",
+        "image": require('~/assets/images/mac/imac24silver.jpeg'),
+        "price": "25.990.000đ"
+    },
+    {
+        "id": 14,
+        "name": "iMac 2020 21.5\" - MHK03 (2.3DC/8GB/ 256GB-SOA)",
+        "image": require('~/assets/images/mac/imac2020.21inch.png'),
+        "price": "23.990.000đ"
+    },
+    {
+        "id": 15,
+        "name": "iMac 2020 27\" - MXWU2 (3.3 6C/8GB/ 512GB/RP5300X-SOA)",
+        "image": require('~/assets/images/mac/imac2020.27inch.png'),
+        "price": "37.990.000đ"
+    },
+    {
+        "id": 16,
+        "name": "iMac 2020 27\" - MXWU2 (3.1 6C/8GB/ 512GB/RP5300X-SOA)",
+        "image": require('~/assets/images/mac/imac2020.27inch.png'),
+        "price": "35.990.000đ"
+    },
+    {
+        "id": 17,
+        "name": "iMac M1 2021 24 inch (8-Core GPU/16GB/256GB)",
+        "image": require('~/assets/images/mac/imac24silver.jpeg'),
+        "price": "40.190.000đ"
+    },
+    {
+        "id": 18,
+        "name": "iMac M1 2021 24 inch (7-Core GPU/8GB/256GB)",
+        "image": require('~/assets/images/mac/imac24silver.jpeg'),
+        "price": "29.690.000đ"
+    },
+    {
+        "id": 19,
+        "name": "iMac M1 2021 24 inch (8-Core GPU/8GB/256GB)",
+        "image": require('~/assets/images/mac/imac24silver.jpeg'),
+        "price": "35.490.000đ"
+    },
+    {
+        "id": 20,
+        "name": "iMac M1 2021 24 inch (7-Core GPU/16GB/256GB)",
+        "image": require('~/assets/images/mac/imac24silver.jpeg'),
+        "price": "35.690.000đ"
+    },
+    {
+        "id": 21,
+        "name": "MacBook Pro 16 M1 Pro (16-Core/16GB/512GB)",
+        "image": require('~/assets/images/mac/macbookpro14silver.png'),
+        "price": "58.990.000đ"
+    },
+    {
+        "id": 22,
+        "name": "MacBook Pro 16 M1 Pro (16-Core/16GB/1TB)",
+        "image": require('~/assets/images/mac/macbookpro14silver.png'),
+        "price": "63.990.000đ"
+    },
+    {
+        "id": 23,
+        "name": "MacBook Pro 14 M1 Max",
+        "image": require('~/assets/images/mac/macbookpro16spacegray.png'),
+        "price": "69.990.000đ"
+    },
+    {
+        "id": 24,
+        "name": "MacBook Pro 16 M1 Max",
+        "image": require('~/assets/images/mac/macbookpro16spacegray.png'),
+        "price": "89.990.000đ"
+    },
+    {
+        "id": 25,
+        "name": "MacBook Pro 16 M1 Pro (16-Core/32GB/512GB)",
+        "image": require('~/assets/images/mac/macbookpro14silver.png'),
+        "price": "70.990.000đ"
+    },
+    {
+        "id": 26,
+        "name": "MacBook Pro 14 M1 Pro (16-Core/32GB/512GB)",
+        "image": require('~/assets/images/mac/macbookpro14silver.png'),
+        "price": "63.190.000đ"
+    },
+    {
+        "id": 27,
+        "name": "MacBook Pro 14 M1 Pro (16-Core/32GB/1TB)",
+        "image": require('~/assets/images/mac/macbookpro14silver.png'),
+        "price": "72.790.000đ"
+    },
+    {
+        "id": 28,
+        "name": "MacBook Pro 14 M1 Pro (14-Core/16GB/512GB)",
+        "image": require('~/assets/images/mac/macbookpro14silver.png'),
+        "price": "57.490.000đ"
+    },
+    {
+        "id": 29,
+        "name": "Studio Display",
+        "image": require('~/assets/images/mac/studiodisplay.png'),
+        "price": "43.990.000đ"
+    },
+    {
+        "id": 30,
+        "name": "Mac Studio",
+        "image": require('~/assets/images/mac/macstudio.png'),
+        "price": "59.990.000đ"
+    },
+    {
+        "id": 31,
+        "name": "Mac mini M1",
+        "image": require('~/assets/images/mac/macminim1.png'),
+        "price": "16.990.000đ"
+    },
+    {
+        "id": 32,
+        "name": "iMac M1 2021 24 inch (8-Core GPU/16GB/512GB)",
+        "image": require('~/assets/images/mac/imac24silver.jpeg'),
+        "price": "45.490.000đ"
+    },
 ]
 const loudspeakers = [
     {

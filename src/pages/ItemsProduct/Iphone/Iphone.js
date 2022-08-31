@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 
-import {BackgroundIphone} from '~/layouts/components/Background'
+import {BackgroundIphone} from '~/layouts/components/Background/BackgroundProduct'
 import config from "~/config";
 import { iphones } from "~/assets/data/product"
 import styles from '../ItemsProduct.module.scss'
