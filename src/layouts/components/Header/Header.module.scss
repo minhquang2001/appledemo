@@ -44,7 +44,11 @@
     font-size: 2rem;
     flex: 1;
     justify-content: flex-end;
-    cursor: pointer;
+    .icon {
+        cursor: pointer;
+        padding: 8px;
+
+    }
 }
 
 .icon+.icon {

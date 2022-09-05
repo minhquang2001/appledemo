@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+// import Modal from './Modal';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from '~/components/GlobalStyles';
 
@@ -10,6 +11,7 @@ root.render(
   <React.StrictMode>
     <GlobalStyles>
       <App />
+      {/* <Modal /> */}
     </GlobalStyles>
   </React.StrictMode>
 );
