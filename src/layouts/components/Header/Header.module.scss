@@ -46,11 +46,36 @@
     justify-content: flex-end;
     .icon {
         cursor: pointer;
-        padding: 8px;
-
+        padding: 9px;
     }
 }
 
-.icon+.icon {
+.search-box {
+    display: flex;
+    justify-content: flex-end;
+    width: 40px;
+    overflow: hidden;
+    transition: 0.5s;
+    border-radius: 20px;
+    &:hover {
+        width: 100%;
+    }
+    input {
+        position: relative;
+        border: none;
+        outline: none;
+        padding: 10px 36px 10px 20px;
+        font-size: 1.4rem;
+        color: #555;
+        background-color: #3d3d3d;
+        // background-color: #515154;
+        border-radius: 20px;
+    }
+    .icon {
+        position: absolute;
+    }
+}
+
+.icon + .icon {
     margin-left: 48px;
 }
