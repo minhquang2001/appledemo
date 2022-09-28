@@ -1,40 +1,57 @@
 import classNames from "classnames/bind";
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBagShopping, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
 
 import config from "~/config";
 import images from "~/assets/images";
 import styles from './Header.module.scss'
+import { ipads } from "~/assets/data/product";
 
 const cx = classNames.bind(styles)
 
 function Header() {
+    const [searchValue, setSearchValue] = useState('')
     const [searchResult, setSearchResult] = useState([])
     const [isActive, setIsActive] = useState(false)
+    const [showResult, setShowResult] = useState(false)
 
     useEffect(() => {
         setTimeout(() => {
             setSearchResult([1, 2, 3])
         }, 3000)
     })
-    const searchToggle = event => {
-        setIsActive(current => !current)
+    const searchActive = () => {
+        setIsActive(true)
     }
-    // function searchToggle(obj) {
-    //     var container = $(obj).closest('.search-wrapper');
-    //     if (!container.hasClass('active')) {
-    //         container.addClass('active');
-    //     }
-    //     else if (container.hasClass('active') && $(obj).closest('.input-holder').length == 0) {
-    //         container.removeClass('active');
-    //         // clear input
-    //         container.find('.search-input').val('');
-    //     }
-    // }
-    const active = isActive ? 'avtive' : ''
+    const searchClose = () => {
+        setSearchValue('')
+        setIsActive(false)
+        setShowResult(false)
+    }
+    const handleHindResult = () => {
+        setShowResult(false)
+    }
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+    //render list product search demo
+    function ArrayNew(product) {
+        if (Number.isFinite(product.id) && product.id <= 7) {
+            return true
+        }
+        return false
+    }
+    const Product = ipads.filter(ArrayNew)
+
+    // toggle active search
+    const active = isActive ? 'active' : ''
     const classes = cx('search-wrapper', { active })
     return (
         <div className={cx('wrapper')}>
@@ -54,23 +71,39 @@ function Header() {
 
                     <Tippy
                         interactive
-                        visible={searchResult.length > 0}
+                        visible={showResult && searchResult.length > 0}
                         render={attrs => (
                             <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                                Ket qua
+                                <div className={cx('grid')}>
+                                    {Product.map((iphone) =>
+                                        <div className={cx('wrapper-product')} key={iphone.id}>
+                                            <img className={cx('image-product')} src={iphone.image} alt="" />
+                                            <div className={cx('wrapper-description')}>
+                                                <div className={cx('product-name')}>{iphone.name}</div>
+                                                <p className={cx('price-name')}>{iphone.price}</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         )}
+                        onClickOutside={handleHindResult}
                     >
-                        {/* <div className={cx('search-box')}>
-                            <input type="text" placeholder="Search" />
-                            <FontAwesomeIcon className={cx('icon')} icon={faSearch} />
-                        </div> */}
+
                         <div className={classes}>
                             <div className={cx("input-holder")}>
-                                <input type="text" className={cx("search-input")} placeholder="Type to search" />
-                                <button className={cx("search-icon")} onClick={searchToggle}><span></span></button>
+                                <input
+                                    className={cx("search-input")}
+                                    type="text"
+                                    spellCheck="false"
+                                    placeholder="Bạn tìm gì..."
+                                    value={searchValue}
+                                    onChange={handleChange}
+                                    onFocus={() => setShowResult(true)}
+                                />
+                                <button className={cx("search-icon")} onClick={searchActive}><span></span></button>
                             </div>
-                            <span className={cx("close")} onClick={searchToggle}></span>
+                            <span className={cx("close")} onClick={searchClose}></span>
                         </div>
                     </Tippy>
                     <FontAwesomeIcon className={cx('icon')} icon={faBagShopping} />
