@@ -4,8 +4,11 @@ const routes = {
     ipad: '/ipad',
     mac: '/mac',
     profile: '/@:nickname',
-    upload: '/upload',
-    search: '/search',
+    manager: '/manager',
+    register: '/manager/register',
+    login: '/manager/login',
+    single: '/manager/post/:id',
+    write: '/manager/write',
     live: '/live',
 };
 

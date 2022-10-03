@@ -36,7 +36,9 @@ body {
     color: var(--text-color);
     overflow-y: overlay;
 }
-
+::selection {
+    background: #cdcdcd;
+}
 .grid {
     width: 1440px;
     max-width: 100%;
