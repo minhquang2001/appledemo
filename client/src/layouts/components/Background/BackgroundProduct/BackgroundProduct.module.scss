@@ -1,0 +1,38 @@
+.wrapper {
+    overflow: hidden;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.slideshowSlider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+}
+
+.background {
+    width: 100%;
+    display: inline-block;
+}
+// .backgrounds {
+//     background-position: center;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     padding-top: 30%;
+//     display: inline-block;
+//     width: 100%;
+// }
+
+.slideshowDot {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 15px 8px 0px;
+    background-color: #c4c4c4;
+    &.active {
+        background-color: #999;
+    }
+}
+.slideshowDots {
+    text-align: center;
+}
