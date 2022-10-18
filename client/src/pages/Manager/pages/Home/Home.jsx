@@ -6,13 +6,17 @@ import axios from "axios";
 import classNames from 'classnames/bind';
 
 import styles from './Home.module.scss'
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 const cx = classNames.bind(styles)
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
-  const cat = useLocation().search
+  const { currentUser } = useContext(AuthContext)
 
+  const cat = useLocation().search
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,22 +63,28 @@ const Home = () => {
 
   return (
     <div className={cx('home')}>
-      <div className={cx("posts")}>
+      {currentUser ? <div className={cx("posts")}>
         {posts.map((post) => (
           <div className={cx("post")} key={post.id}>
             <div className={cx("img")}>
-              <img src={`${post.img}`} alt="" />
+              
+              <div className={cx('img-product')} style={{backgroundImage: `url(${post.img})`}}></div>
             </div>
             <div className={cx("content")}>
-              <Link className={cx("link")} to={`/post/${post.id}`}>
-                <h1>{post.name}</h1>
+              <Link className={cx("link")} to={`/manager/post/${post.id}`}>
+                <h3>{post.name}</h3>
               </Link>
-              <p>{getText(post.price)}</p>
+              <p>{getText(post.price.toLocaleString().concat('đ'))}</p>
               <button>Read More</button>
             </div>
           </div>
         ))}
-      </div>
+      </div> : 
+        <div className={cx('note')}>
+          <p>Vui lòng đăng nhập để xem sản phẩm</p>
+          <Link className={cx('link')} to={`/manager/login`}>Login</Link>
+        </div>
+      }
     </div>
   );
 };

@@ -45,15 +45,16 @@ const Single = () => {
     }
   }
 
-  // const getText = (html) =>{
-  //   const doc = new DOMParser().parseFromString(html, "text/html")
-  //   return doc.body.textContent
-  // }
-
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
+  const price = post.price?.toLocaleString().concat('đ')
+  console.log(currentUser)
   return (
     <div className={cx("single")}>
       <div className={cx("content")}>
-        <img src={`${post?.img}`} alt="" />
+      <div className={cx('img-product')} style={{backgroundImage: `url(${post.img})`}}></div>
         <div className={cx("user")}>
           {post.userImg && <img
             src={post.userImg}
@@ -63,7 +64,7 @@ const Single = () => {
             <span>{post.username}</span> 
             <p>Posted {moment(post.date).fromNow()}</p>
           </div>
-          { post.username && (
+          {currentUser.username === post.username && (
             <div className={cx("edit")}>
               <Link to={`/write?edit=2`} state={post}>
                 <img src={Edit} alt="" />
@@ -72,12 +73,9 @@ const Single = () => {
             </div>
           )}
         </div>
-        <h1>{post.name}</h1>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(post.price),
-          }}
-        ></p>      </div>
+        <h2>{post.name}</h2>
+        <p>{getText(price)}</p>
+             </div>
       <Menu cat={post.group}/>
     </div>
   );

@@ -18,37 +18,38 @@ const Navbar = () => {
           </Link>
         </div>
         <div className={cx("links")}>
-          <Link className={cx("link")} to="/manager/?cat=art">
-            <h6>ART</h6>
+          <Link className={cx("link")} to="/manager/?cat=iphone">
+            <h6>IPHONE</h6>
           </Link>
-          <Link className={cx("link")} to="/manager/?cat=science">
-            <h6>SCIENCE</h6>
+          <Link className={cx("link")} to="/manager/?cat=ipad">
+            <h6>IPAD</h6>
           </Link>
-          <Link className={cx("link")} to="/manager/?cat=technology">
-            <h6>TECHNOLOGY</h6>
+          <Link className={cx("link")} to="/manager/?cat=macbook">
+            <h6>MACBOOK</h6>
           </Link>
-          <Link className={cx("link")} to="/manager/?cat=cinema">
-            <h6>CINEMA</h6>
+          <Link className={cx("link")} to="/manager/?cat=watch">
+            <h6>WATCH</h6>
           </Link>
-          <Link className={cx("link")} to="/manager/?cat=design">
-            <h6>DESIGN</h6>
-          </Link>
-          <Link className={cx("link")} to="/manager/?cat=food">
-            <h6>FOOD</h6>
+          <Link className={cx("link")} to="/manager/?cat=sound">
+            <h6>ÂM THANH</h6>
           </Link>
           <span>{currentUser?.username}</span>
-          {currentUser ? (
-            <span onClick={logout}>Logout</span>
+          {currentUser ? (<>
+            <span onClick={logout}>
+              <Link className={cx("link")} to="/manager">
+              Logout
+            </Link></span>
+            <span className={cx("write")}>
+            <Link className={cx("link")} to="/write">
+              Write
+            </Link>
+          </span></>
           ) : (
             <Link className={cx("link")} to="/manager/login">
               Login
             </Link>
           )}
-          <span className={cx("write")}>
-            <Link className={cx("link")} to="/write">
-              Write
-            </Link>
-          </span>
+          
         </div>
       </div>
     </div>

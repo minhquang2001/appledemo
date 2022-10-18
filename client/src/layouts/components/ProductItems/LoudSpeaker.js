@@ -18,23 +18,20 @@ function LoudSpeaker() {
     return (
         <div>
             <h1 className={cx('heading')}>Âm thanh</h1>
-            <div className={cx('grid')}>
-                <div className={cx('grid__row')}>
-                    {Product.map((loudspeaker) =>
-                        <div className={cx('grid__column-3')} key={loudspeaker.id}>
+            <div className={cx('grid wide')}>
+                <div className={cx('row wide')}>
+                    {Product.map((loudspeakers) =>
+                        <div className={cx('col wide l-3 m-4 c-6')} key={loudspeakers.id}>
                             <div className={cx('wrapper')}>
-                                <div className={cx('background-product')} style={{ backgroundImage: `url(${loudspeaker.image})` }}></div>
-
-                                <p className={cx('product-name')}>{loudspeaker.name}</p>
-                                <p className={cx('product-price')}>Giá từ {loudspeaker.price}</p>
-
+                                <div className={cx('background-product')} style={{ backgroundImage: `url(${loudspeakers.image})` }}></div>
+                                <p className={cx('product-name')}>{loudspeakers.name}</p>
+                                <p className={cx('product-price')}>Giá từ {loudspeakers.price}</p>
                             </div>
                         </div>
-                    )
-                    }
-                    <div className={cx('button-wrapper')}>
+                    )}
+                </div>
+                <div className={cx('button-wrapper')}>
                         <Link to='' className={cx('button')}>Xem tất cả</Link>
-                    </div>
                 </div>
             </div>
         </div >

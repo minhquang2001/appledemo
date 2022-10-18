@@ -18,23 +18,20 @@ function Watch() {
     return (
         <div>
             <h1 className={cx('heading')}>Watch</h1>
-            <div className={cx('grid')}>
-                <div className={cx('grid__row')}>
+            <div className={cx('grid wide')}>
+                <div className={cx('row wide')}>
                     {Product.map((watch) =>
-                        <div className={cx('grid__column-3')} key={watch.id}>
+                        <div className={cx('col wide l-3 m-4 c-6')} key={watch.id}>
                             <div className={cx('wrapper')}>
                                 <div className={cx('background-product')} style={{ backgroundImage: `url(${watch.image})` }}></div>
-
                                 <p className={cx('product-name')}>{watch.name}</p>
                                 <p className={cx('product-price')}>Giá từ {watch.price}</p>
                             </div>
                         </div>
-
-                    )
-                    }
-                    <div className={cx('button-wrapper')}>
+                    )}
+                </div>
+                <div className={cx('button-wrapper')}>
                         <Link to='' className={cx('button')}>Xem tất cả</Link>
-                    </div>
                 </div>
             </div>
         </div >

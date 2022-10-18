@@ -10,11 +10,12 @@
         flex-direction: column;
         gap: 30px;
 
-        img {
-            width: 40%;
-            height: 300px;
-            object-fit: cover;
-        }
+        .img-product {
+            padding-top: 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+         }
 
         .user {
             display: flex;

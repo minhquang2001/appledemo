@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import './GlobalStyles.scss';
+import './Responsive.scss';
 
 function GlobalStyles({ children }) {
     return children;
