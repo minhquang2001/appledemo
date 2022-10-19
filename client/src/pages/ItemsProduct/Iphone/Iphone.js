@@ -19,17 +19,17 @@ function IphonePage() {
                 <h1 className={cx('heading')}>iPhone</h1>
             </div>
             <BackgroundIphone />
-            <div className={cx('grid')}>
-                <div className={cx('grid__row')}>
-                    {iphones.map((iphone) => 
-                        <div className={cx('grid__column-3')} key={iphone.id}>
+            <div className={cx('grid wide')}>
+                <div className={cx('row wide')}>
+                    {iphones.map((iphone) =>
+                        <div className={cx('col wide l-3 m-4 c-6')} key={iphone.id}>
                             <div className={cx('wrapper')}>
                                 <div className={cx('background-product')} style={{ backgroundImage: `url(${iphone.image})` }}></div>
                                 <p className={cx('product-name')}>{iphone.name}</p>
                                 <p className={cx('product-price')}>Giá từ {iphone.price}</p>
                             </div>
-                      </div>
-                    )}  
+                        </div>
+                    )}
                 </div>
             </div>
         </>

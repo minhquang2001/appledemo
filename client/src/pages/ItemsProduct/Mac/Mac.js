@@ -19,17 +19,17 @@ function MacPage() {
                 <h1 className={cx('heading')}>Mac</h1>
             </div>
             <BackgroundMac />
-            <div className={cx('grid')}>
-                <div className={cx('grid__row')}>
-                    {macs.map((mac) => 
-                        <div className={cx('grid__column-3')} key={mac.id}>
+            <div className={cx('grid wide')}>
+                <div className={cx('row wide')}>
+                    {macs.map((mac) =>
+                        <div className={cx('col wide l-3 m-4 c-6')} key={mac.id}>
                             <div className={cx('wrapper')}>
                                 <div className={cx('background-product')} style={{ backgroundImage: `url(${mac.image})` }}></div>
                                 <p className={cx('product-name')}>{mac.name}</p>
                                 <p className={cx('product-price')}>Giá từ {mac.price}</p>
                             </div>
-                      </div>
-                    )}  
+                        </div>
+                    )}
                 </div>
             </div>
         </>
