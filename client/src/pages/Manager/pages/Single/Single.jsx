@@ -7,7 +7,7 @@ import axios from "axios";
 import moment from "moment";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
-import DOMPurify from "dompurify";
+// import DOMPurify from "dompurify";
 import classNames from "classnames/bind";
 import styles from './Single.module.scss'
 
@@ -50,7 +50,7 @@ const Single = () => {
     return doc.body.textContent
   }
   const price = post.price?.toLocaleString().concat('đ')
-  console.log(currentUser)
+  
   return (
     <div className={cx("single")}>
       <div className={cx("content")}>

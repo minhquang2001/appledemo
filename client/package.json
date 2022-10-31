@@ -25,13 +25,13 @@
         "web-vitals": "^2.1.4",
         "dompurify": "^2.4.0",
         "moment": "^2.29.4",
-        "react-quill": "^2.0.0"
+        "react-quill": "^2.0.0",
+        "react-app-rewired": "^2.2.1",
+        "sass": "^1.54.5"
     },
     "devDependencies": {
         "babel-plugin-module-resolver": "^4.1.0",
-        "customize-cra": "^1.0.0",
-        "react-app-rewired": "^2.2.1",
-        "sass": "^1.54.5"
+        "customize-cra": "^1.0.0"
     },
     "scripts": {
         "start": "react-app-rewired start",

@@ -13,8 +13,8 @@
 
 .slideshowDot {
     display: inline-block;
-    height: 6px;
-    width: 6px;
+    height: 12px;
+    width: 12px;
     border-radius: 50%;
     cursor: pointer;
     margin: 15px 8px 0px;
@@ -25,4 +25,11 @@
 }
 .slideshowDots {
     text-align: center;
+}
+
+@media (max-width: 739px) {
+    .slideshowDot {
+        height: 6px;
+        width: 6px;
+    }
 }

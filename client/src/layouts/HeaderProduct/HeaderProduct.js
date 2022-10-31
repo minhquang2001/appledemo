@@ -1,4 +1,5 @@
 import Header from '~/layouts/components/Header';
+import Footer from '~/layouts/components/Footer';
 
 function HeaderProduct({ children }) {
     return (
@@ -7,6 +8,7 @@ function HeaderProduct({ children }) {
             <div className="container">
                 <div className="content">{children}</div>
             </div>
+            <Footer />
         </div>
     );
 }

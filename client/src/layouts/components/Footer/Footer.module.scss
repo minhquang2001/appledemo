@@ -104,6 +104,9 @@
 
 // Mobile
 @media (max-width: 739px) {
+    .wrapper {
+        padding: 8px 0;
+    }
     .wrap-logo {
         padding: 0;
         .img-logo {
@@ -148,4 +151,5 @@
             margin: 0;
         }
     }
+
 }

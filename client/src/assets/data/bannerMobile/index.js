@@ -1,0 +1,1 @@
+export {bannerHomeMobile} from './bannerMobile'

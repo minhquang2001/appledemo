@@ -3,13 +3,16 @@ const routes = {
     iphone: '/iphone',
     ipad: '/ipad',
     mac: '/mac',
-    profile: '/@:nickname',
+
+    //Single Page
+    profile: '/iphone/:id',
+
+    // Manager Page
     manager: '/manager',
     register: '/manager/register',
     login: '/manager/login',
     single: '/manager/post/:id',
     write: '/manager/write',
-    live: '/live',
 };
 
 export default routes;
