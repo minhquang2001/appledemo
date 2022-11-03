@@ -171,7 +171,11 @@ body {
         top: -8px;
     }
 }
-
+@media (max-width: 1350px) {
+    .container {
+        margin-top: 123px;
+    }
+}
 @media only screen and (max-width: 1024px) {
     .container {
         margin-top: 116px;

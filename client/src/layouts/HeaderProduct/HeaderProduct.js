@@ -3,7 +3,7 @@ import Footer from '~/layouts/components/Footer';
 
 function HeaderProduct({ children }) {
     return (
-        <div>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
             <Header />
             <div className="container">
                 <div className="content">{children}</div>
