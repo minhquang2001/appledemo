@@ -5,11 +5,13 @@ import { iphones } from "~/assets/data/product";
 
 import { Link } from "react-router-dom";
 import config from "~/config";
+// import { useEffect, useState } from "react";
 
 
 const cx = classNames.bind(styles)
 
 function Iphone() {
+    // const [data, setData] = useState([])
     function ArrayNew(product) {
         if (Number.isFinite(product.id) && product.id <= 4) {
             return true
@@ -17,6 +19,14 @@ function Iphone() {
         return false
     }
     const Product = iphones.filter(ArrayNew)
+
+    // useEffect (() => {
+    //     fetch('https://api-uit.herokuapp.com/api/ipads')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setData(data)
+    //     })
+    // })
     return (
         <div>
             <h1 className={cx('heading')}>iPhone</h1>

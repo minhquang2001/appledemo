@@ -66,7 +66,7 @@ function Header() {
     const ToggleCart = () => {
         setShowCart(!showCart)
     }
-    const show = showCart ? 'active' : ''
+    const show = showCart ? 'toggle-cart' : ''
     return (
         <>
 
@@ -186,29 +186,29 @@ function Header() {
             </div>
             {show && <div className={cx('wrap-modal')} onClick={ToggleCart}>
             </div>}
-                <div className={cx('cart', show)}>
-                    <FontAwesomeIcon icon={faXmark} className={cx('icon-mark-cart')} onClick={ToggleCart}/>
-                    <div className={cx('height-cart')}>
-                        {Product.map((iphone) =>
-                            <div className={cx('product-cart')} key={iphone.id}>
-                                <img className={cx('cart-img')} src={iphone.image} alt="" />
-                                <div className={cx('wrapper-cart')}>
-                                    <div className={cx('name-cart')}>{iphone.name}</div>
-                                    <p className={cx('price-cart')}>1 x {iphone.price}</p>
-                                </div>
+            <div className={cx('cart', show)}>
+                <FontAwesomeIcon icon={faXmark} className={cx('icon-mark-cart')} onClick={ToggleCart} />
+                <div className={cx('height-cart')}>
+                    {Product.map((iphone) =>
+                        <div className={cx('product-cart')} key={iphone.id}>
+                            <img className={cx('cart-img')} src={iphone.image} alt="" />
+                            <div className={cx('wrapper-cart')}>
+                                <div className={cx('name-cart')}>{iphone.name}</div>
+                                <p className={cx('price-cart')}>1 x {iphone.price}</p>
                             </div>
-                        )}
+                        </div>
+                    )}
+                </div>
+                <div className={cx('footer-cart')}>
+                    <div className={cx('wrap-total')}>
+                        <p>Tạm tính: </p>
+                        <p>400.000.000d</p>
                     </div>
-                    <div className={cx('footer-cart')}>
-                        <div className={cx('wrap-total')}>
-                            <p>Tạm tính: </p>
-                            <p>400.000.000d</p>
-                        </div>
-                        <div className={cx('wrap-pay')}>
-                            <div className={cx('cart-buy')}>MUA NGAY</div>
-                        </div>
+                    <div className={cx('wrap-pay')}>
+                        <div className={cx('cart-buy')}>MUA NGAY</div>
                     </div>
                 </div>
+            </div>
         </>
     );
 }
