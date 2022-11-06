@@ -1,11 +1,15 @@
 const routes = {
     home: '/',
-    iphone: '/iphone',
-    ipad: '/ipad',
-    mac: '/mac',
+    iphone: '/iphones',
+    ipad: '/ipads',
+    mac: '/macs',
 
     //Single Page
-    profile: '/iphone/:id',
+    iphones: '/iphones/:id',
+    ipads: '/ipads/:id',
+    macs: '/macs/:id',
+
+
 
     // Manager Page
     manager: '/manager',

@@ -44,6 +44,7 @@
                     border: 1px solid transparent;
                     border-radius: 8px;
                     cursor: pointer;
+                    transition: border .2s linear;
                 }
 
                 .active {
@@ -88,7 +89,14 @@
                 .gold {
                     background-color: #fcebd3;
                 }
-
+                .space{
+                    transition: border .2s linear;
+                    border: 1px solid transparent;
+                    border-radius: 50%;
+                    &:hover {
+                        border: 1px solid var(--primary);
+                    }
+                }
                 .active {
                     border: 1px solid var(--primary);
                     border-radius: 50%;

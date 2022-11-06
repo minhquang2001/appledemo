@@ -45,10 +45,10 @@ function Footer() {
     const animate3 = subnav3 ? 'animate' : ''
     const animate4 = subnav4 ? 'animate' : ''
 
-    const classes1 = cx('wrap__column-footer',  animate1 )
-    const classes2 = cx('wrap__column-footer',  animate2 )
-    const classes3 = cx('wrap__column-footer',  animate3 )
-    const classes4 = cx('wrap__column-footer',  animate4 )
+    const classes1 = cx('wrap__column-footer', animate1)
+    const classes2 = cx('wrap__column-footer', animate2)
+    const classes3 = cx('wrap__column-footer', animate3)
+    const classes4 = cx('wrap__column-footer', animate4)
 
 
     return (
@@ -213,46 +213,6 @@ function Footer() {
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-                    {/* <div className={cx('l-0 m-0 c-12')}>
-                        <div className={cx('wrap-content')}>
-                            {SidebarData.map((item, index) => 
-                                
-                                    <div key={index}>
-                                        <div className={cx('wrap-heading')} onClick={item.subNav && showSubnav}>
-                                            <div className={cx('heading')}>
-                                                 {item.title}
-                                            </div>
-                                            <div className={cx('icon')}>
-                                                 <div>
-                                                     {item.subNav && subnav
-                                                         ? item.iconOpened
-                                                         : item.subNav
-                                                         ? item.iconClosed
-                                                         : null}
-                                                 </div>
-                                            </div>
-                                            <div className={cx('wrap__column-footer')}>
-                                                {subnav && item.subNav.map((items, index) => {
-                                                    return (
-                                                        <>
-                                                            <div className="wrap" key={index}> 
-                                                                <Link to={items.path} className={cx('information')} >{items.title}</Link><br />
-                                                            </div>
-                                                        </>
-                                                    )
-                                                })}
-                                             </div>
-                                        </div>         
-                                    </div>
-                                
-                            )}
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>

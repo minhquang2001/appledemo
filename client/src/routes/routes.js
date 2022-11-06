@@ -34,7 +34,10 @@ const publicRoutes = [
     { path: config.routes.mac, component: Mac, layout: HeaderProduct },
 
     // Single Page
-    { path: config.routes.profile, component: SingleProduct, layout: HeaderProduct},
+    { path: config.routes.iphones, component: SingleProduct, layout: HeaderProduct},
+    { path: config.routes.ipads, component: SingleProduct, layout: HeaderProduct},
+    { path: config.routes.macs, component: SingleProduct, layout: HeaderProduct},
+
 
     //Manager
     { path: config.routes.manager, component: HomeManager, layout: LayoutManager },
