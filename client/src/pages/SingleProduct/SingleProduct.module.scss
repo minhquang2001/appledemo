@@ -4,9 +4,12 @@
 
     .img-product {
         width: 100%;
+        padding: 20px;
     }
+
     .wrap-heading {
         padding-right: 12px;
+
         .heading {
             font-size: 3rem;
             font-weight: 600;
@@ -45,6 +48,11 @@
                     border-radius: 8px;
                     cursor: pointer;
                     transition: border .2s linear;
+
+                    &:hover {
+                        border: 1px solid var(--primary);
+
+                    }
                 }
 
                 .active {
@@ -89,14 +97,17 @@
                 .gold {
                     background-color: #fcebd3;
                 }
-                .space{
+
+                .space {
                     transition: border .2s linear;
                     border: 1px solid transparent;
                     border-radius: 50%;
+
                     &:hover {
                         border: 1px solid var(--primary);
                     }
                 }
+
                 .active {
                     border: 1px solid var(--primary);
                     border-radius: 50%;
@@ -140,18 +151,22 @@
                 margin-left: 16px;
             }
         }
+
         @media (max-width: 1024px) {
             .wrap-buy {
                 flex-direction: column;
                 margin-top: 24px;
+
                 .box-buy {
                     width: 100%;
                 }
+
                 .box-buy+.box-buy {
                     margin: 16px 0 0 0;
                 }
             }
         }
+
         .wrap-option-information {
             margin-top: 48px;
             padding: 8px 16px;
@@ -218,12 +233,14 @@
                     font-size: 1.4rem;
                 }
             }
+
             @media (max-width: 739px) {
                 .padding-content {
                     padding: 8px;
 
                 }
             }
+
             .tab {
                 display: none;
             }
@@ -233,6 +250,7 @@
             }
         }
     }
+
     @media (max-width: 739px) {
         .wrap-heading {
             padding: 0;
@@ -240,5 +258,3 @@
         }
     }
 }
-
-    

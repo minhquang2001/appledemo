@@ -17,6 +17,7 @@
     font-size: 4rem;
 }
 .wrapper {
+    display: block;
     background-color: #fff;
     padding-bottom: 48px;
     border-radius: 16px;
@@ -36,7 +37,7 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-    padding-top: 100%;
+    padding-top: 75%;
 }
 
 .product-name {

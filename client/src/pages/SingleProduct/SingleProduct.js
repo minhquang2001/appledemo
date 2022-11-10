@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
@@ -21,61 +21,152 @@ function SingleProduct() {
       value: <Specification />
     }
   ]
-  const [index, setIndex] = useState(1)
-  const [product, setProduct] = useState({});
-  const [idx, setIdx] = useState(0)
-  const [indexImage, setIndexImage] = useState(0)
 
 
+  const [index, setIndex] = useState(1);
+  const [product, setProduct] = useState([]);
+  const [productDetail, setProductDetail] = useState()
+
+  // Set option product
+  const [price, setPrice] = useState(0);
+  const [image, setImage] = useState('')
+  const [colorValue, setColorValue] = useState("green")
+  const [ramValue, setRamValue] = useState(undefined)
+  const [storageValue, setStorageValue] = useState("256GB")
+
+
+
+
+  // const [productDetail, setProductDetail] = useState([])
   const location = useLocation()
-
   const productId = location.pathname.split('/')[2]
   const path = location.pathname
   console.log(productId, path)
+
   useEffect(() => {
-    fetch(`https://api-uit.herokuapp.com/api/${path}`)
+    fetch(`https://api-uit.herokuapp.com/api/iphone/${productId}`)
       .then(res => res.json())
       .then(data => {
-        setProduct(data)
+        setProduct(data);
+        setProductDetail(data.product_details)
+        var dataFirst = data.product_details[0]
+        var checkRam = dataFirst.ram !== undefined ? `${dataFirst.ram}` : undefined
+        setRamValue(checkRam)
+        setPrice(dataFirst.price)
+        setImage(dataFirst.image)
+        setColorValue(dataFirst.color)
       })
-  }, [path])
+  }, [productId])
+  const findColor = (color) => {
+    setColorValue(color);
 
-  console.log(product)
+  }
+  const findRam = (ram) => {
+    setRamValue(ram);
+  }
+  const findStorage = (storage) => {
+    setStorageValue(storage);
+  }
+
+  // console.log(productDetail)
+  useLayoutEffect(() => {
+    var target = productDetail && productDetail.find(item => {
+      var ram = ramValue === undefined ? ramValue : `${ramValue}`;
+      return (
+        item.ram === ram &&
+        item.color === `${colorValue}` &&
+        item.storage === `${storageValue}`
+      )
+    })
+    // console.log(target)
+    var changeImage = target !== undefined ? (target.image) : image;
+    var changePrice = target !== undefined ? (target.price) : price;
+    setImage(changeImage)
+    setPrice(changePrice)
+    // console.log(result);
+  }, [productDetail, ramValue, colorValue, storageValue, price, image])
+
   return (
+
     <div className={cx('wrap')}>
       <div className="grid wide">
         <div className="wide row">
-          {/* <div className="wide l-6 m-6 c-12">
-            <img className={cx('img-product')} src={img} alt="anh" />
+          <div className="wide l-6 m-6 c-12" >
+            <img className={cx('img-product')} src={(image)} alt={product.name} />
           </div>
           <div className="wide l-6 m-6 c-12">
             <div className={cx("wrap-heading")}>
-              <div className={cx('heading')}>iPhone 14 Pro Max 128GB</div>
+              <div className={cx('heading')}>{product.name}</div>
               <div className={cx('separate')}></div>
-              <div className={cx('price')}>32.490.000d</div>
-              <div className={cx('wrap-storage')}>
-                <div className={cx('storage-heading')}>Chọn dung lượng</div>
-                <div className={cx('wrap-option')}>
-                  <div className={cx('option', 'active')}>128GB</div>
-                  <div className={cx('option')}>256GB</div>
-                </div>
+              <div className={cx('price')}>{price}</div>
+
+              {/* Check product have storage */}
+              {product.option && product.option.map((option, idx) =>
+              <div key={idx}>
+                {(option.key === "storage" ?
+  
+                  <div className={cx('wrap-storage')}>
+                    <div className={cx('storage-heading')}>Chọn {option.key}</div>
+                    <div className={cx('wrap-option')}>
+                      {option.value.map((value, idx) =>
+                        <div className={cx('option', `${value === storageValue ? "active" : ""}`)}
+                          key={idx}
+                          value={value}
+                          onClick={() => findStorage(value)}
+                        >
+                          {value}
+                        </div>
+                      )}
+                    </div>
+                  </div> : <></>)}
               </div>
+              )}
 
 
-              <div className={cx('wrap-color')}>
-                <div className={cx('heading-color')}>Chọn màu</div>
-                <div className={cx('option-color')}>
-                  <div className={cx('space', 'active')}>
-                    <div className={cx('purple', 'radio-color')}></div>
-                  </div>
-                  <div className={cx('space')}>
-                    <div className={cx('gray', 'radio-color')}></div>
-                  </div>
-                  <div className={cx('space')}>
-                    <div className={cx('gold', 'radio-color')}></div>
-                  </div>
-                </div>
+              {/* Check product have ram */}
+              {product.option && product.option.map((option, idx) =>
+              <div key={idx}>
+                {(option.key === "ram" ?
+  
+                  <div className={cx('wrap-storage')}>
+                    <div className={cx('storage-heading')}>Chọn {option.key}</div>
+                    <div className={cx('wrap-option')}>
+                      {option.value.map((value, idx) =>
+  
+                        <div className={cx('option', `${value === ramValue ? "active" : ""}`)}
+                          key={idx}
+                          value={value}
+                          onClick={() => findRam(value)}
+                        >
+                          {value}
+                        </div>
+                      )}
+                    </div>
+                  </div> : <></>)}
               </div>
+              )}
+
+              {/* Check product have color */}
+              {product.option && product.option.map((option, idx) =>
+              <div key={idx}>
+                {(option.key === "color" ?
+  
+                  <div className={cx('wrap-color')}>
+                    <div className={cx('heading-color')}>Chọn {option.key}</div>
+                    <div className={cx('option-color')}>
+                      {option.value.map((value, idx) =>
+                        <div className={cx('space', `${value === colorValue ? "active" : ""}`)}
+                          key={idx}
+                          value={value}
+                          onClick={() => findColor(value)}
+                        >
+                          <div className={cx('radio-color')} style={{ backgroundColor: value }}></div>
+                        </div>
+                      )}
+                    </div>
+                  </div> : <></>)}
+              </div>
+              )}
 
 
               <div className={cx('wrap-buy')}>
@@ -89,110 +180,16 @@ function SingleProduct() {
 
 
               <div className={cx('wrap-option-information')}>
-                <div className={cx('wrap-content')}>
-                  <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                  <p className={cx('content')}>Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Lightning - Type C</p>
-                </div>
-                <div className={cx('wrap-content')}>
-                  <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                  <p className={cx('content')}>Bảo hành chính hãng 1 năm</p>
-                </div>
-                <div className={cx('wrap-content')}>
-                  <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                  <p className={cx('content')}>Giao hàng nhanh toàn quốc</p>
-                </div>
-                <div className={cx('wrap-content')}>
-                  <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                  <p className={cx('content')}>Gọi đặt mua 1900.6626 (7:30 - 22:00)</p>
-                </div>
+                {product.services && product.services.map((service, index) =>
+                (
+                  <div className={cx('wrap-content')} key={index}>
+                    <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
+                    <p className={cx('content')}>{service}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div> */}
-
-
-
-
-          {/* {product.map((iphone) =>  */}
-
-          <>
-            <div className="wide l-6 m-6 c-12">
-
-              <img className={cx('img-product')} src={product.imageProfile && product.imageProfile[indexImage]} alt={product.name} />
-            </div>
-            <div className="wide l-6 m-6 c-12">
-              <div className={cx("wrap-heading")}>
-                <div className={cx('heading')}>{product.name}</div>
-                <div className={cx('separate')}></div>
-                <div className={cx('price')}>{product.price && product.price[idx]}</div>
-                <div className={cx('wrap-storage')}>
-                  <div className={cx('storage-heading')}>Chọn dung lượng</div>
-                  <div className={cx('wrap-option')}>
-                    {product.storage && product.storage.map((option, index) =>
-                    (
-                      <div className={cx('option', `${idx === index ? "active" : ""}`)}
-                        key={index}
-                        onClick={() => setIdx(index)}
-                      >{option}
-                      </div>)
-                    )}
-                  </div>
-                </div>
-
-
-                <div className={cx('wrap-color')}>
-                  <div className={cx('heading-color')}>Chọn màu</div>
-                  <div className={cx('option-color')}>
-                    {product.color && product.color.map((color, index) =>
-                    (
-                      <div className={cx('space', `${indexImage === index ? "active" : ""}`)}
-                        key={index}
-                        onClick={() => setIndexImage(index)}>
-                        <div className={cx('radio-color')} style={{ backgroundColor: color }}></div>
-                      </div>
-                    )
-                    )}
-                  </div>
-                </div>
-
-
-                <div className={cx('wrap-buy')}>
-                  <div className={cx('box-buy')}>
-                    <div className={cx('buy-cash')}>MUA NGAY</div>
-                  </div>
-                  <div className={cx('box-buy')}>
-                    <div className={cx('add-to-list')}>THÊM VÀO GIỎ HÀNG</div>
-                  </div>
-                </div>
-
-
-                <div className={cx('wrap-option-information')}>
-                  <div className={cx('wrap-content')}>
-                    <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                    <p className={cx('content')}>Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Lightning - Type C</p>
-                  </div>
-                  <div className={cx('wrap-content')}>
-                    <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                    <p className={cx('content')}>Bảo hành chính hãng 1 năm</p>
-                  </div>
-                  <div className={cx('wrap-content')}>
-                    <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                    <p className={cx('content')}>Giao hàng nhanh toàn quốc</p>
-                  </div>
-                  <div className={cx('wrap-content')}>
-                    <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                    <p className={cx('content')}>Gọi đặt mua 1900.6626 (7:30 - 22:00)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </>
-          {/* )} */}
-
-
-
-
-
-
+          </div>
 
 
         </div>
@@ -209,7 +206,9 @@ function SingleProduct() {
                   <div
                     key={tab.id}
                     className={cx('tab', `${index === tab.id ? "active" : ""}`)}
-                  >{tab.value}</div>
+                  >
+                    {/* {tab.value} */}
+                  </div>
                 ))}
               </div>
             </div>

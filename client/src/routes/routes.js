@@ -5,9 +5,9 @@ import { HeaderProduct, LayoutManager } from '~/layouts';
 
 // Pages
 import Home from '~/pages/Home';
-import Iphone from '~/pages/ItemsProduct/Iphone';
-import Ipad from '~/pages/ItemsProduct/Ipad';
-import Mac from '~/pages/ItemsProduct/Mac';
+// import Iphone from '~/pages/ItemsProduct/Iphone';
+// import Ipad from '~/pages/ItemsProduct/Ipad';
+import ItemsProduct from '~/pages/ItemsProduct/ItemsProduct';
 
 // Single Page
 import SingleProduct from '~/pages/SingleProduct';
@@ -29,9 +29,9 @@ import { Register, Login } from '~/pages/Manager/pages/Register';
 const publicRoutes = [
     // Page client
     { path: config.routes.home, component: Home },
-    { path: config.routes.iphone, component: Iphone, layout: HeaderProduct },
-    { path: config.routes.ipad, component: Ipad, layout: HeaderProduct },
-    { path: config.routes.mac, component: Mac, layout: HeaderProduct },
+    { path: config.routes.iphone, component: ItemsProduct, layout: HeaderProduct },
+    { path: config.routes.ipad, component: ItemsProduct, layout: HeaderProduct },
+    { path: config.routes.mac, component: ItemsProduct, layout: HeaderProduct },
 
     // Single Page
     { path: config.routes.iphones, component: SingleProduct, layout: HeaderProduct},
