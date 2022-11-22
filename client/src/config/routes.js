@@ -3,6 +3,8 @@ const routes = {
     iphone: '/iphones',
     ipad: '/ipads',
     mac: '/macs',
+    checkout: '/checkout',
+    notfound: '*',
 
     //Single Page
     iphones: '/iphones/:id',

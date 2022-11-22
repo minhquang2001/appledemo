@@ -47,6 +47,7 @@ function Iphone() {
                 </div>
             </div>
         </div >
+
     );
 }
 

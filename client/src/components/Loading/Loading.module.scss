@@ -1,0 +1,36 @@
+// Single Loading
+.card-skeleton {
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+.left {
+    margin-right: 8px;
+    width: 50%;
+}
+.right {
+    margin-left: 8px;
+    width: 50%;
+}
+.bottom {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto; 
+}
+
+//Page Loading 
+.wrap {
+    padding-top: 60px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.heading {
+    text-align: center;
+    padding: 24px 0;
+}
+.background {
+    width: 100%;
+}

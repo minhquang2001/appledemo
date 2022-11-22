@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBagShopping, faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState, useRef } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
@@ -10,6 +10,7 @@ import config from "~/config";
 import images from "~/assets/images";
 import styles from './Header.module.scss'
 import { ipads } from "~/assets/data/product";
+import Cart from "~/components/Cart/Cart";
 
 const cx = classNames.bind(styles)
 
@@ -18,7 +19,6 @@ function Header() {
     const [searchResult, setSearchResult] = useState([])
     const [isActive, setIsActive] = useState(false)
     const [showResult, setShowResult] = useState(false)
-    const [showCart, setShowCart] = useState(false)
     const inputRef = useRef()
     useEffect(() => {
         setTimeout(() => {
@@ -62,11 +62,6 @@ function Header() {
     const active = isActive ? 'active' : ''
     const classes = cx('search-wrapper', { active })
 
-    // toggle cart
-    const ToggleCart = () => {
-        setShowCart(!showCart)
-    }
-    const show = showCart ? 'toggle-cart' : ''
     return (
         <>
 
@@ -125,8 +120,7 @@ function Header() {
                                     </div>
                                 </Tippy>
                             </div>
-                            <FontAwesomeIcon className={cx('icon')} icon={faBagShopping} onClick={ToggleCart} />
-
+                            <Cart />
                         </div>
                     </div>
                 </div>
@@ -182,31 +176,6 @@ function Header() {
                     <Link to={config.routes.home} className={cx('list-product')}>Watch</Link>
                     <Link to={config.routes.home} className={cx('list-product')}>Âm Thanh</Link>
                     <Link to={config.routes.home} className={cx('list-product')}>Dịch Vụ</Link>
-                </div>
-            </div>
-            {show && <div className={cx('wrap-modal')} onClick={ToggleCart}>
-            </div>}
-            <div className={cx('cart', show)}>
-                <FontAwesomeIcon icon={faXmark} className={cx('icon-mark-cart')} onClick={ToggleCart} />
-                <div className={cx('height-cart')}>
-                    {Product.map((iphone) =>
-                        <div className={cx('product-cart')} key={iphone.id}>
-                            <img className={cx('cart-img')} src={iphone.image} alt="" />
-                            <div className={cx('wrapper-cart')}>
-                                <div className={cx('name-cart')}>{iphone.name}</div>
-                                <p className={cx('price-cart')}>1 x {iphone.price}</p>
-                            </div>
-                        </div>
-                    )}
-                </div>
-                <div className={cx('footer-cart')}>
-                    <div className={cx('wrap-total')}>
-                        <p>Tạm tính: </p>
-                        <p>400.000.000d</p>
-                    </div>
-                    <div className={cx('wrap-pay')}>
-                        <div className={cx('cart-buy')}>MUA NGAY</div>
-                    </div>
                 </div>
             </div>
         </>

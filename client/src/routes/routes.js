@@ -12,6 +12,11 @@ import ItemsProduct from '~/pages/ItemsProduct/ItemsProduct';
 // Single Page
 import SingleProduct from '~/pages/SingleProduct';
 
+// CheckOut
+import CheckOut from '~/pages/Cart/CheckOut';
+
+// Not Found
+import NotFound from '~/pages/NotFound';
 
 //Manager
 import { HomeManager } from '~/pages/Manager/pages/Home';
@@ -28,10 +33,16 @@ import { Register, Login } from '~/pages/Manager/pages/Register';
 // Public routes
 const publicRoutes = [
     // Page client
-    { path: config.routes.home, component: Home },
+    { path: config.routes.home, component: Home, layout: HeaderProduct },
     { path: config.routes.iphone, component: ItemsProduct, layout: HeaderProduct },
     { path: config.routes.ipad, component: ItemsProduct, layout: HeaderProduct },
     { path: config.routes.mac, component: ItemsProduct, layout: HeaderProduct },
+    { path: config.routes.checkout, component: CheckOut, layout: HeaderProduct },
+    
+    
+    //Not Found
+    { path: config.routes.notfound, component: NotFound, layout: HeaderProduct },
+
 
     // Single Page
     { path: config.routes.iphones, component: SingleProduct, layout: HeaderProduct},
