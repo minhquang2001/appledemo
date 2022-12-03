@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import classNames from 'classnames/bind';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -12,7 +14,39 @@ const cx = classNames.bind(style);
 function CheckOut() {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
+    // console.log(cart)
+    
+    const arrayListProduct = cart?.map((product) => 
 
+        ({id : (product.id), quantity: product.quantity})
+    
+    )
+    // console.log(arrayListProduct)
+    const [dataCart, setDataCart] = useState({
+        name: '',
+        address: '',
+        phone: '',
+        note: null,
+        listProduct: [arrayListProduct]
+    });
+    console.log(dataCart)
+    const [error, setError] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setDataCart((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post('https://api-apple-store.onrender.com/v1/admin/groupproduct', dataCart);
+            navigate('/');
+        } catch (err) {
+            console.log(err);
+            setError(true);
+        }
+    };
     const getTotal = () => {
         let totalPrice = 0;
         cart.forEach((item) => {
@@ -39,22 +73,15 @@ function CheckOut() {
                                 <form>
                                     <div className={cx('form')}>
                                         <h3>Thông tin nhận hàng</h3>
-                                        <div className={cx('flex-radio')}>
-                                            <div className={cx('wrap-radio')}>
-                                                <input type="radio" id="male" name="sex" value="male" />
-                                                <label htmlFor="male">Anh</label>
-                                            </div>
-                                            <div className={cx('wrap-radio')}>
-                                                <input type="radio" id="female" name="sex" value="female" />
-                                                <label htmlFor="female">Chị</label>
-                                            </div>
-                                        </div>
+
                                         <div className={cx('wrap-information')}>
                                             <div className={cx('wrap-input_small')}>
                                                 <input
                                                     spellCheck="false"
                                                     className={cx('input-small')}
                                                     placeholder="Họ và tên"
+                                                    name="name"
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                             <div className={cx('wrap-input_small')}>
@@ -62,48 +89,13 @@ function CheckOut() {
                                                     spellCheck="false"
                                                     className={cx('input-small')}
                                                     placeholder="Số điện thoại"
+                                                    name="phone"
+                                                    onChange={handleChange}
                                                 />
                                             </div>
                                         </div>
-                                        <div className={cx('wrap-information')}>
-                                            <div className={cx('wrap-input_large')}>
-                                                <input
-                                                    spellCheck="false"
-                                                    className={cx('input-large')}
-                                                    placeholder="Email"
-                                                />
-                                            </div>
-                                        </div>
+
                                         <div className={cx('wrap-option__buy')}>
-                                            <h3>Chọn phương thức nhận hàng</h3>
-                                            <div className={cx('flex-radio')}>
-                                                <div className={cx('wrap-radio')}>
-                                                    <input type="radio" id="shop" name="location" value="shop" />
-                                                    <label htmlFor="shop">Nhận tại cửa hàng</label>
-                                                </div>
-                                                <div className={cx('wrap-radio')}>
-                                                    <input type="radio" id="home" name="location" value="home" />
-                                                    <label htmlFor="home">Giao tận nơi</label>
-                                                </div>
-                                            </div>
-                                            <div className={cx('wrap-information')}>
-                                                <div className={cx('wrap-input_small')}>
-                                                    <label>Tỉnh / Thành Phố</label>
-                                                    <input
-                                                        spellCheck="false"
-                                                        className={cx('input-small')}
-                                                        placeholder="VD: TPHCM, HANOI"
-                                                    />
-                                                </div>
-                                                <div className={cx('wrap-input_small')}>
-                                                    <label>Quận / Huyện</label>
-                                                    <input
-                                                        spellCheck="false"
-                                                        className={cx('input-small')}
-                                                        placeholder="VD: Quận 1, ..."
-                                                    />
-                                                </div>
-                                            </div>
                                             <div className={cx('wrap-information')}>
                                                 <div className={cx('wrap-input_large')}>
                                                     <label>Địa chỉ</label>
@@ -111,6 +103,8 @@ function CheckOut() {
                                                         spellCheck="false"
                                                         className={cx('input-large')}
                                                         placeholder="Địa chỉ"
+                                                        name="address"
+                                                        onChange={handleChange}
                                                     />
                                                 </div>
                                             </div>
@@ -121,6 +115,8 @@ function CheckOut() {
                                                         spellCheck="false"
                                                         className={cx('input-large')}
                                                         placeholder="Ghi chú (không bắt buộc)"
+                                                        name="note"
+                                                        onChange={handleChange}
                                                     />
                                                 </div>
                                             </div>
@@ -139,7 +135,7 @@ function CheckOut() {
                                         <div className={cx('wrap-cart')}>
                                             {cart &&
                                                 cart?.map((product, idx) => (
-                                                    <div className={cx('product-cart')} key={idx}>
+                                                    <div className={cx('product-cart')} key={idx} >
                                                         <img className={cx('cart-img')} src={product.image} alt="" />
                                                         <div className={cx('wrapper-cart')}>
                                                             <div className={cx('name-cart')}>{product.name}</div>
@@ -156,13 +152,9 @@ function CheckOut() {
                                             <h3>{priceTotalString}</h3>
                                         </div>
                                         <div className={cx('wrap-pay')}>
-                                            <div
-                                                className={cx('cart-buy')}
-                                                
-                                            >
-                                                Đặt hàng
-                                            </div>
+                                            <div className={cx('cart-buy')} onClick={handleSubmit}>Đặt hàng</div>
                                         </div>
+                                        {error && "Something went wrong!"}
                                     </div>
                                 </form>
                             </div>

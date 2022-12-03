@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const httpRequest = axios.create({
     // baseURL: process.env.REACT_APP_BASE_URL,
-    baseURL: 'http://20.255.63.237:3000/v1',
+    baseURL: 'https://api-uit.herokuapp.com/api/iphone',
 });
 
 export const get = async (path, options = {}) => {

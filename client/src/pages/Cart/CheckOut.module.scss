@@ -74,7 +74,7 @@
 }
 
 .wrap-cart {
-    height: 500px;
+    height: 400px;
     overflow: scroll;
 }
 
@@ -147,4 +147,9 @@
     padding: 12px 20px;
     background-color: var(--primary);
     color: #fff;
+}
+@media (max-width: 739px) {
+    .form {
+        margin-top: 16px;
+    }
 }
