@@ -3,10 +3,8 @@ import styles from './BackgroundHome.module.scss'
 import { useState, useRef, useEffect } from "react";
 import { bannerHome } from "~/assets/data/banner";
 import { bannerHomeMobile } from "~/assets/data/bannerMobile";
-import  HomeLoading from "~/components/Loading/HomeLoading";
 const cx = classNames.bind(styles)
 function Background() {
-    const [isLoading, setIsLoading] = useState(false)
 
     const [index, setIndex] = useState(0);
     const [width, setWidth] = useState(window.innerWidth)
@@ -47,7 +45,6 @@ function Background() {
     }, [width])
     return (
         <>
-            {isLoading && <HomeLoading />}
             <div className={cx('wrapper')}>
     
                 {width > '739' ?

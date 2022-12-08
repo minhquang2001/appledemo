@@ -29,24 +29,14 @@ const cartSlice = createSlice({
     removeItem: (state, action) => {
         const {productId, productDetailId} = action.payload;
         const cart = state.cart
-        // const selectedProduct = cart.filter((item) => item.id === productId);
-        // console.log(selectedProduct)
-        // // const result = selectedProduct.product_details?.slice(selectedProduct, productDetailId)
-        // // console.log(result)
-        // if(Array.isArray(selectedProduct?.product_details)) {
-        //   selectedProduct.product_details = selectedProduct.product_details.filter(item => item.id !== productDetailId);
-        //   return (selectedProduct.product_details)
-        // }
-        // state.cart = result
-        // const removeItem = (selectedProduct).filter((item) => 
-        //      item.idProduct === action.payload.productDetailId
-            
-        // );
         const removeItem = cart.filter((item) => !(item.id === productId && item.idProduct === productDetailId))
         state.cart = removeItem;
 
         
     },
+    removeAllItem: (state) => {
+      state.cart = []
+    }
   },
 });
 
@@ -56,4 +46,5 @@ export const {
   incrementQuantity,
   decrementQuantity,
   removeItem,
+  removeAllItem
 } = cartSlice.actions;

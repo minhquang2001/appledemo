@@ -41,7 +41,7 @@
 }
 
 .product-name {
-    margin: 4px 32px 16px 32px;
+    margin: 4px 32px 16px 24px;
     font-size: 2rem;
     font-weight: 700;
     height: 6rem;
@@ -52,8 +52,17 @@
 }
 
 .product-price {
-    margin: 0px 32px;
+    margin: 0px 24px;
     font-size: 1.8rem;
     color: var(--primary);
     font-weight: 600;
+}
+
+@media (max-width: '1270px') {
+    .product-name {
+        font-size: 1.8rem;
+    }
+    .product-price {
+        font-size: 1.6rem;
+    }
 }

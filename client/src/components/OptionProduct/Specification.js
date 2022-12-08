@@ -8,17 +8,21 @@ const cx = classNames.bind(styles)
 
 function Specification() {
     const [product, setProduct] = useState({});
+    const [update, setUpdate] = useState(true)
     const location = useLocation()
     const path = location.pathname
+    const productId = location.pathname.split('/')[2];
     useEffect(() => {
-        fetch(`https://api-uit.herokuapp.com/api/${path}`)
+        fetch(`https://api.levanphuc.asia/api/v1/groupproduct/${productId}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
+                setUpdate(false)
             })
-    }, [path])
+    }, [productId])
     return (
         <>
+            {/* {!update && 
             <table className={cx('table')}>
                 <tbody>
                     {product.specifications && product.specifications.map((option, index) =>
@@ -34,7 +38,8 @@ function Specification() {
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </table>} */}
+            {product && <p>Coming Soon !!!</p>}
         </>
     )
 }

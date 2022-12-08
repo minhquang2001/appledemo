@@ -1,7 +1,7 @@
 import config from '~/config';
 
 // Layouts
-import { HeaderProduct, LayoutManager } from '~/layouts';
+import { HeaderProduct } from '~/layouts';
 
 // Pages
 import Home from '~/pages/Home';
@@ -18,15 +18,7 @@ import CheckOut from '~/pages/Cart/CheckOut';
 // Not Found
 import NotFound from '~/pages/NotFound';
 
-//Manager
-import { HomeManager } from '~/pages/Manager/pages/Home';
-import Single from '~/pages/Manager/pages/Single';
-import Write from '~/pages/Manager/pages/Write';
-import { Register, Login } from '~/pages/Manager/pages/Register';
-// import Profile from '~/pages/Profile';
-// import Upload from '~/pages/Upload';
-// import Search from '~/pages/Search';
-// import Live from '~/pages/Live';
+
 
 // Data
 
@@ -37,7 +29,11 @@ const publicRoutes = [
     { path: config.routes.iphone, component: ItemsProduct, layout: HeaderProduct },
     { path: config.routes.ipad, component: ItemsProduct, layout: HeaderProduct },
     { path: config.routes.mac, component: ItemsProduct, layout: HeaderProduct },
+    { path: config.routes.watch, component: ItemsProduct, layout: HeaderProduct },
+    { path: config.routes.loudspeaker, component: ItemsProduct, layout: HeaderProduct },
+
     { path: config.routes.checkout, component: CheckOut, layout: HeaderProduct },
+
     
     
     //Not Found
@@ -48,14 +44,9 @@ const publicRoutes = [
     { path: config.routes.iphones, component: SingleProduct, layout: HeaderProduct},
     { path: config.routes.ipads, component: SingleProduct, layout: HeaderProduct},
     { path: config.routes.macs, component: SingleProduct, layout: HeaderProduct},
+    { path: config.routes.watchs, component: SingleProduct, layout: HeaderProduct},
+    { path: config.routes.loudspeakers, component: SingleProduct, layout: HeaderProduct},
 
-
-    //Manager
-    { path: config.routes.manager, component: HomeManager, layout: LayoutManager },
-    { path: config.routes.single, component: Single, layout: LayoutManager },
-    { path: config.routes.write, component: Write, layout: LayoutManager },
-    { path: config.routes.register, component: Register, layout: null },
-    { path: config.routes.login, component: Login, layout: null },
 
 
 ];

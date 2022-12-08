@@ -1,42 +1,50 @@
+import { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 
 import styles from "./ProductItems.module.scss"
-import { ipads } from "~/assets/data/product";
 import config from "~/config";
+import HomeLoading from "~/components/Loading/HomeLoading";
 
 
 
 const cx = classNames.bind(styles)
 
 function Ipad() {
-    function ArrayNew(product) {
-        if (Number.isFinite(product.id) && product.id <= 4) {
-            return true
-        }
-        return false
-    }
-    const Product = ipads.filter(ArrayNew)
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
+    useEffect(() => {
+        fetch('https://api.levanphuc.asia/api/v1/category/1/groupproducts')
+            .then(res => res.json())
+            .then(data => {
+                setData(data.data)
+                setLoading(false)
+            })
+    })
+    const dataSlice = data.slice(0, 4)
     return (
-        <div>
-            <h1 className={cx('heading')}>iPad</h1>
-            <div className={cx('grid wide')}>
-                <div className={cx('row wide')}>
-                    {Product.map((ipad) =>
-                        <div className={cx('col wide l-3 m-4 c-6')} key={ipad.id}>
-                            <div className={cx('wrapper')}>
-                                <div className={cx('background-product')} style={{ backgroundImage: `url(${ipad.image})` }}></div>
-                                <p className={cx('product-name')}>{ipad.name}</p>
-                                <p className={cx('product-price')}>Giá từ {ipad.price}</p>
+        <>
+            {loading && <HomeLoading />}
+            {!loading && <div>
+                <h1 className={cx('heading')}>iPad</h1>
+                <div className={cx('grid wide')}>
+                    <div className={cx('row wide')}>
+                        {dataSlice.map((product) =>
+                            <div className={cx('col wide l-3 m-4 c-6')} key={product.id}>
+                                <Link to={`ipads/${product.id}`} className={cx('wrapper')}>
+                                    <div className={cx('background-product')} style={{ backgroundImage: `url(${product.image})` }}></div>
+                                    <p className={cx('product-name')}>{product.name}</p>
+                                    <p className={cx('product-price')}>Giá từ {(product.price).toLocaleString().concat('đ')}</p>
+                                </Link>
                             </div>
-                        </div>
-                    )}
-                </div>
-                <div className={cx('button-wrapper')}>
+                        )}
+                    </div>
+                    <div className={cx('button-wrapper')}>
                         <Link to={config.routes.ipad} className={cx('button')}>Xem tất cả</Link>
+                    </div>
                 </div>
-            </div>
-        </div >
+            </div >}
+        </>
     );
 }
 

@@ -3,6 +3,8 @@ const routes = {
     iphone: '/iphones',
     ipad: '/ipads',
     mac: '/macs',
+    watch: '/watchs',
+    loudspeaker: '/loudspeakers',
     checkout: '/checkout',
     notfound: '*',
 
@@ -10,15 +12,8 @@ const routes = {
     iphones: '/iphones/:id',
     ipads: '/ipads/:id',
     macs: '/macs/:id',
-
-
-
-    // Manager Page
-    manager: '/manager',
-    register: '/manager/register',
-    login: '/manager/login',
-    single: '/manager/post/:id',
-    write: '/manager/write',
+    watchs: '/watchs/:id',
+    loudspeakers: '/loudspeakers/:id',
 };
 
 export default routes;

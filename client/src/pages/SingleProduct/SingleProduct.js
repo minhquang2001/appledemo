@@ -45,6 +45,7 @@ function SingleProduct() {
     const [colorValue, setColorValue] = useState(undefined);
     const [ramValue, setRamValue] = useState(undefined);
     const [storageValue, setStorageValue] = useState(undefined);
+    const [screenSizeValue, setScreenSizeValue] = useState(undefined)
 
     //error fetch data
     const [data, setData] = useState(null);
@@ -53,13 +54,6 @@ function SingleProduct() {
     const cart = useSelector((state) => state.cart);
     console.log(cart);
     const dispatch = useDispatch();
-    // const getTotalQuantity = () => {
-    //   let total = 0
-    //   cart.forEach(item => {
-    //     total += item.quantity
-    //   })
-    //   return total
-    // }
 
     // get path
     const location = useLocation();
@@ -72,28 +66,34 @@ function SingleProduct() {
         const fetchApi = async () => {
 
             const result = await singleApi.singleApi(productId);
-            if(result.message) {
+            if (result.message) {
                 console.log(result.message)
                 setIsLoading(false)
                 setError(result.message);
             }
 
             else {
-            console.log(result.data);
-            setData(true);
-            setIsLoading(false)
-            setProduct(result.data);
-            setName(result.data.name);
-            setId(result.data.id);
-            setProductDetail(result.data.product_details);
-            var dataFirst = result.data.product_details[0];
-            console.log(dataFirst)
-            var checkRam = dataFirst.ram !== undefined ? `${dataFirst.ram}` : undefined;
-            setRamValue(checkRam);
-            setPrice(dataFirst.price);
-            setStorageValue(dataFirst.storage);
-            setImage(dataFirst.image);
-            setColorValue(dataFirst.color);
+                console.log(result.data);
+                setData(true);
+                setIsLoading(false)
+                setProduct(result.data);
+                setName(result.data.name);
+                setId(result.data.id);
+                setProductDetail(result.data.product_details);
+                var dataFirst = result.data.product_details[0];
+                console.log(dataFirst)
+                var checkRam = dataFirst.ram !== undefined ? `${dataFirst.ram}` : undefined;
+                var checkStorage = dataFirst.storage !== undefined ? `${dataFirst.storage}` : undefined;
+                var checkColor = dataFirst.color !== undefined ? `${dataFirst.color}` : undefined;
+                var checkScreenSize = dataFirst['screen-size'] !== undefined ? `${dataFirst['screen-size']}` : undefined;
+
+
+                setRamValue(checkRam);
+                setPrice(dataFirst.price);
+                setStorageValue(checkStorage);
+                setImage(dataFirst.image);
+                setColorValue(checkColor);
+                setScreenSizeValue(checkScreenSize)
             }
         };
 
@@ -110,7 +110,7 @@ function SingleProduct() {
         //         setData(true);
         //         setIsLoading(false)
         //         setProduct(data.data);
-                
+
         //         setName(data.data.name);
         //         setId(data.data.id);
         //         setProductDetail(data.data.product_details);
@@ -137,6 +137,7 @@ function SingleProduct() {
         color: colorValue,
         ram: ramValue,
         storage: storageValue,
+        screenSize: screenSizeValue,
     };
     console.log(product_current);
     //handle option
@@ -149,7 +150,10 @@ function SingleProduct() {
     const findStorage = (storage) => {
         setStorageValue(storage);
     };
-    // console.log(product)
+    const findScreenSize = (screenSize) => {
+        setScreenSizeValue(screenSize);
+    };
+    console.log(product)
     // console.log(productDetail[0].options[0])
     // handle render when choose option
     useLayoutEffect(() => {
@@ -157,9 +161,12 @@ function SingleProduct() {
             productDetail &&
             productDetail.find((item) => {
                 var ram = ramValue === undefined ? ramValue : `${ramValue}`;
-                return item.ram === ram && item.color === `${colorValue}` && item.storage === `${storageValue}`;
+                var color = colorValue === undefined ? colorValue : `${colorValue}`;
+                var storage = storageValue === undefined ? storageValue : `${storageValue}`;
+                var screenSize = screenSizeValue === undefined ? screenSizeValue : `${screenSizeValue}`;
+                return item.ram === ram && item.color === color && item.storage === storage && item['screen-size'] === screenSize;
             });
-        // console.log(target)
+        console.log(target)
         // var changeName = target !== undefined ? target.name : name;
         var changeId = target !== undefined ? target.id : idProduct;
         var changeImage = target !== undefined ? target.image : image;
@@ -169,7 +176,7 @@ function SingleProduct() {
         setImage(changeImage);
         setPrice(changePrice);
         // console.log(result);
-    }, [productDetail, ramValue, colorValue, storageValue, price, image, name, idProduct]);
+    }, [productDetail, ramValue, colorValue, storageValue, price, image, name, idProduct, screenSizeValue]);
 
     const getText = (html) => {
         const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -211,6 +218,35 @@ function SingleProduct() {
                                                                     key={idx}
                                                                     value={value}
                                                                     onClick={() => findStorage(value)}
+                                                                >
+                                                                    {value}
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <></>
+                                                )}
+                                            </div>
+                                        ))}
+
+                                    {/* Check product have screen-size */}
+                                    {product.options &&
+                                        product.options.map((option, idx) => (
+                                            <div key={idx}>
+                                                {option.key === 'screen-size' ? (
+                                                    <div className={cx('wrap-storage')}>
+                                                        <div className={cx('storage-heading')}>Chọn kích thước màn hình</div>
+                                                        <div className={cx('wrap-option')}>
+                                                            {option.value.map((value, idx) => (
+                                                                <div
+                                                                    className={cx(
+                                                                        'option',
+                                                                        `${value === screenSizeValue ? 'active' : ''}`,
+                                                                    )}
+                                                                    key={idx}
+                                                                    value={value}
+                                                                    onClick={() => findScreenSize(value)}
                                                                 >
                                                                     {value}
                                                                 </div>
@@ -357,8 +393,7 @@ function SingleProduct() {
                                                 key={tab.id}
                                                 className={cx('tab', `${index === tab.id ? 'active' : ''}`)}
                                             >
-                                                {/* {tab.value} */}
-                                                Coming Soon !!!
+                                                {tab.value}
                                             </div>
                                         ))}
                                     </div>

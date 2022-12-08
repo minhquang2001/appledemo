@@ -74,8 +74,8 @@ function Header() {
                         <Link to={config.routes.iphone} className={cx('list-product')}>iPhone</Link>
                         <Link to={config.routes.ipad} className={cx('list-product')}>iPad</Link>
                         <Link to={config.routes.mac} className={cx('list-product')}>Macbook</Link>
-                        <Link to={config.routes.home} className={cx('list-product')}>Watch</Link>
-                        <Link to={config.routes.home} className={cx('list-product')}>Âm Thanh</Link>
+                        <Link to={config.routes.watch} className={cx('list-product')}>Watch</Link>
+                        <Link to={config.routes.loudspeaker} className={cx('list-product')}>Âm Thanh</Link>
                         <Link to={config.routes.home} className={cx('list-product')}>Dịch Vụ</Link>
                     </div>
                     <div className={cx('box-icon')}>
@@ -173,8 +173,8 @@ function Header() {
                     <Link to={config.routes.iphone} className={cx('list-product')}>iPhone</Link>
                     <Link to={config.routes.ipad} className={cx('list-product')}>iPad</Link>
                     <Link to={config.routes.mac} className={cx('list-product')}>Macbook</Link>
-                    <Link to={config.routes.home} className={cx('list-product')}>Watch</Link>
-                    <Link to={config.routes.home} className={cx('list-product')}>Âm Thanh</Link>
+                    <Link to={config.routes.watch} className={cx('list-product')}>Watch</Link>
+                    <Link to={config.routes.loudspeaker} className={cx('list-product')}>Âm Thanh</Link>
                     <Link to={config.routes.home} className={cx('list-product')}>Dịch Vụ</Link>
                 </div>
             </div>

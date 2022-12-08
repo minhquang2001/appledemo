@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import style from './CheckOut.module.scss';
-import { removeItem } from 'src/pages/SingleProduct/redux/cartSlice';
+import { removeAllItem } from 'src/pages/SingleProduct/redux/cartSlice';
 
 const cx = classNames.bind(style);
 function CheckOut() {
@@ -18,16 +18,16 @@ function CheckOut() {
     
     const arrayListProduct = cart?.map((product) => 
 
-        ({id : (product.id), quantity: product.quantity})
+        ({productDetailId : (product.id), qty: product.quantity})
     
     )
     // console.log(arrayListProduct)
     const [dataCart, setDataCart] = useState({
         name: '',
         address: '',
-        phone: '',
+        numberPhone: '',
         note: null,
-        listProduct: [arrayListProduct]
+        listProducts: arrayListProduct
     });
     console.log(dataCart)
     const [error, setError] = useState(false);
@@ -40,7 +40,8 @@ function CheckOut() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://api-apple-store.onrender.com/v1/admin/groupproduct', dataCart);
+            await axios.post('https://api.levanphuc.asia/api/v1/order', dataCart);
+            dispatch(removeAllItem())
             navigate('/');
         } catch (err) {
             console.log(err);
@@ -151,7 +152,7 @@ function CheckOut() {
                                             <h3>Total:</h3>
                                             <h3>{priceTotalString}</h3>
                                         </div>
-                                        <div className={cx('wrap-pay')}>
+                                        <div className={cx('wrap-pay')} >
                                             <div className={cx('cart-buy')} onClick={handleSubmit}>Đặt hàng</div>
                                         </div>
                                         {error && "Something went wrong!"}

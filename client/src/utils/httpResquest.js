@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const httpRequest = axios.create({
     // baseURL: process.env.REACT_APP_BASE_URL,
-    baseURL: 'https://api-uit.herokuapp.com/api/iphone',
+    baseURL: 'https://api.levanphuc.asia/api/v1',
 });
 
 export const get = async (path, options = {}) => {
