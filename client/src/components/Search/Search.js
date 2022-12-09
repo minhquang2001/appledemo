@@ -6,6 +6,8 @@ import classNames from "classnames/bind";
 import styles from './Search.module.scss'
 import {useDebounce} from 'src/hooks';
 import * as searchApi  from 'src/services/searchApi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 
 const cx = classNames.bind(styles)
@@ -15,7 +17,8 @@ function Search() {
     const [searchResult, setSearchResult] = useState([])
     const [isActive, setIsActive] = useState(false)
     const [showResult, setShowResult] = useState(false)
-
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
     const debouncedValue = useDebounce(searchValue, 500)
     const searchActive = () => {
         setIsActive(true)
@@ -25,6 +28,7 @@ function Search() {
 
     const searchClose = () => {
         setSearchValue('')
+        setError(false)
         setIsActive(false)
         setShowResult(false)
     }
@@ -41,6 +45,9 @@ function Search() {
         if (!searchValue.startsWith(' ')) {
             setSearchValue(searchValue);
         }
+        if (searchValue === '') {
+            setError(false)
+        }
     };
      //render list product search demo
     
@@ -50,12 +57,20 @@ function Search() {
             setSearchResult([])
             return;
         }
-
+        
         const fetchApi = async () => {
-            
+            setLoading(true)
+            setError(false)
             const result = await searchApi.search(debouncedValue)
-            setSearchResult(result)
-
+            if (result.length === 0) {
+                setError(true)
+                setLoading(false)
+            }
+            else {
+                setSearchResult(result)
+                setError(false)
+                setLoading(false)
+            }
         }
         fetchApi()
     }, [debouncedValue])
@@ -67,10 +82,10 @@ function Search() {
     <>
         <Tippy
             interactive
-            visible={showResult && searchResult.length > 0}
+            visible={(showResult && loading) || (showResult && searchResult.length > 0) || (showResult && error)}
             render={attrs => (
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <div className={cx('grid')}>
+                    {!loading && !error && (<div className={cx('grid')} style={{maxHeight: '500px'}}>
                         {searchResult.map((result) =>
                             <Link to={`/search/${result.id}`} className={cx('wrapper-product')} key={result.id} onClick={handleClickResult}>
                                 <img className={cx('image-product')} src={result.image} alt="" />
@@ -80,7 +95,15 @@ function Search() {
                                 </div>
                             </Link>
                         )}
-                    </div>
+                    </div>)}
+                    {loading && <div className={cx('icon-loading')}>
+                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                    </div>}
+                    {error && (
+                            <div className={cx('text-error')}>
+                                <p style={{fontSize: '1.6rem'}}>Không có kết quả phù hợp với "{searchValue}"</p>
+                            </div>
+                        )}
                 </div>
             )}
             onClickOutside={handleHindResult}

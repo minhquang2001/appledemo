@@ -75,6 +75,7 @@ function SingleProduct() {
                 // console.log(result.data);
                 setData(true);
                 setIsLoading(false)
+                setError(null)
                 setProduct(result.data);
                 setName(result.data.name);
                 setId(result.data.id);

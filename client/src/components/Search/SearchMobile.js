@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faXmark, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import classNames from "classnames/bind";
@@ -16,6 +16,8 @@ function SearchMobile() {
     const [searchValue, setSearchValue] = useState('')
     const [searchResult, setSearchResult] = useState([])
     const [showResult, setShowResult] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
     const inputRef = useRef()
     const debouncedValue = useDebounce(searchValue, 500)
 
@@ -23,6 +25,7 @@ function SearchMobile() {
 
     const handleClear = () => {
         setSearchValue('');
+        setError(false)
         setSearchResult([]);
         inputRef.current.focus();
     };
@@ -49,25 +52,29 @@ function SearchMobile() {
         }
 
         const fetchApi = async () => {
-            
+            setLoading(true)
             const result = await searchApi.search(debouncedValue)
-            setSearchResult(result)
+            if (result.length === 0) {
+                setError(true)
+                setLoading(false)
+            }
+            else {
 
+                setSearchResult(result)
+                setError(false)
+                setLoading(false)
+            }
         }
         fetchApi()
     }, [debouncedValue])
-    // toggle active search
-    // const active = isActive ? 'active' : ''
-    // const classes = cx('search-wrapper', { active })
-
     return (
         <>
             <Tippy
                 interactive
-                visible={showResult && searchResult.length > 0}
+                visible={(showResult && searchResult.length > 0) || (showResult && error) }
                 render={attrs => (
                     <div className={cx('search-result-2')} tabIndex="-1" {...attrs}>
-                        <div className={cx('wrap-tippy-mobile')}>
+                        {!error && (<div className={cx('wrap-tippy-mobile')} style={{maxHeight: '275px'}}>
                             {searchResult.map((result) =>
                                 <Link to={`/search/${result.id}`} className={cx('wrapper-product')} key={result.id} onClick={handleClickResult}>
                                     <img className={cx('image-product')} src={result.image} alt="" />
@@ -77,7 +84,12 @@ function SearchMobile() {
                                     </div>
                                 </Link>
                             )}
-                        </div>
+                        </div>)}
+                        {error && (
+                            <div className={cx('text-error')}>
+                                <p>Không có kết quả phù hợp với "{searchValue}"</p>
+                            </div>
+                        )}
                     </div>
                 )}
                 onClickOutside={handleHindResult}
@@ -95,14 +107,18 @@ function SearchMobile() {
                             onFocus={() => setShowResult(true)}
                         />
                     </form>
-                    {searchValue && (<div className={cx('icon-xmark')} onClick={handleClear}>
+                    {searchValue && !loading && (<div className={cx('icon-xmark')} onClick={handleClear}>
                         <FontAwesomeIcon icon={faXmark} />
                     </div>)}
+                    {loading && (
+                        <div className={cx('icon-loading-mobile')}>
+                            <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                        </div>
+                    )}
                     <div className={cx('icon-search')}>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </div>
                 </div>
-                {/* <span className={cx("close")} onClick={searchClose}></span> */}
             </Tippy>
         </>)
 }

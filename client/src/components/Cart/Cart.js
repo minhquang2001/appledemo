@@ -57,15 +57,15 @@ function Cart() {
                         <div className={cx('height-cart')}>
                             {cart &&
                                 cart?.map((product, idx) => (
-                                    <Link to={`/cart/${product.id}`} className={cx('product-cart')} key={idx} onClick={ToggleCart}>
+                                    <div className={cx('product-cart')} key={idx} >
                                         <img className={cx('cart-img')} src={product.image} alt="" />
-                                        <div className={cx('wrapper-cart')}>
+                                        <Link to={`/cart/${product.id}`} className={cx('wrapper-cart')} onClick={ToggleCart}>
                                             <div className={cx('name-cart')}>{product.name}</div>
                                             <p className={cx('price-cart')}>
                                                 {product.quantity} x{' '}
                                                 {getText(product.price.toLocaleString().concat('đ'))}
                                             </p>
-                                        </div>
+                                        </Link>
 
                                         <div
                                             className={cx('cartItem__removeButton')}
@@ -80,7 +80,7 @@ function Cart() {
                                         >
                                             x
                                         </div>
-                                    </Link>
+                                    </div>
                                 ))}
                         </div>
                         <div className={cx('footer-cart')}>
