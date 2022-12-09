@@ -1,14 +1,14 @@
-import * as httpRequest from '~/utils/httpRequest';
+import httpRequest from 'src/utils/httpRequest';
 
-export const search = async (q, type = 'less') => {
+
+export const search = async (q) => {
     try {
-        const res = await httpRequest.get('users/search', {
+        const res = await httpRequest.get('groupproducts', {
             params: {
                 q,
-                type,
             },
         });
-        return res.data;
+        return res.data.data;
     } catch (error) {
         console.log(error);
     }

@@ -1,2 +1,2 @@
-export { BackgroundMac} from './BackgroundMac'
+export { default } from './BackgroundProductPage'
 

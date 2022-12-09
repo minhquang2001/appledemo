@@ -1,17 +1,11 @@
 // Single Loading
-.card-skeleton {
-    display: flex;
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding-top: 40px;
-}
-.left {
-    margin-right: 8px;
+
+.img-loading {
+    padding-right: 16px;
     width: 50%;
 }
-.right {
-    margin-left: 8px;
+.information-loading {
+    padding-left: 16px;
     width: 50%;
 }
 .bottom {
@@ -33,4 +27,17 @@
 }
 .background {
     width: 100%;
+}
+@media (max-width: '739px') {
+    .img-loading {
+        width: 100%;
+        padding: 0;
+    }
+    .information-loading {
+        width: 100%;
+        padding: 0;
+    }
+    .bottom {
+        display: none;
+    }
 }

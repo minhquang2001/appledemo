@@ -5,6 +5,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    
 
     p {
         margin-bottom: 20px;
@@ -85,6 +86,10 @@
 .cart-img {
     height: 100px;
     width: 100px;
+}
+.wrapper-cart {
+    max-width: 230px;
+    width: 100%;
 }
 
 .name-cart {

@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import { Link, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from 'react'
-import { BackgroundMac } from '~/layouts/components/Background/BackgroundProduct'
+import BackgroundProductPage from "src/layouts/components/Background/BackgroundProduct/BackgroundProductPage";
 import config from "~/config";
 import styles from './ItemsProduct.module.scss'
 import PageLoading from "~/components/Loading/PageLoading";
@@ -9,7 +9,7 @@ import * as categoryApi from "~/services/categoryApi";
 
 
 const cx = classNames.bind(styles)
-function MacPage() {
+function ProductPage() {
     const location = useLocation()
     const [product, setProduct] = useState([]);
     const [data, setData] = useState(false)
@@ -53,13 +53,6 @@ function MacPage() {
         };
 
         fetchApi();
-        // fetch(`https://api-uit.onrender.com/api/${heading}`)
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         setProduct(data)
-        //         setData(true)
-        //         setIsLoading(false)
-        //     })
     }, [category])
 
 
@@ -76,7 +69,7 @@ function MacPage() {
                         </div>
                         <h1 className={cx('heading')}>{header}</h1>
                     </div>
-                    {product && <BackgroundMac />}
+                    {product && <BackgroundProductPage />}
                     <div className={cx('grid wide')}>
                         <div className={cx('row wide')}>
                             {product && product.map((product) =>
@@ -98,4 +91,4 @@ function MacPage() {
     );
 }
 
-export default MacPage;
+export default ProductPage;

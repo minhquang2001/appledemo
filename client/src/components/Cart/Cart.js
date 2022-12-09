@@ -57,7 +57,7 @@ function Cart() {
                         <div className={cx('height-cart')}>
                             {cart &&
                                 cart?.map((product, idx) => (
-                                    <div className={cx('product-cart')} key={idx}>
+                                    <Link to={`/cart/${product.id}`} className={cx('product-cart')} key={idx} onClick={ToggleCart}>
                                         <img className={cx('cart-img')} src={product.image} alt="" />
                                         <div className={cx('wrapper-cart')}>
                                             <div className={cx('name-cart')}>{product.name}</div>
@@ -80,7 +80,7 @@ function Cart() {
                                         >
                                             x
                                         </div>
-                                    </div>
+                                    </Link>
                                 ))}
                         </div>
                         <div className={cx('footer-cart')}>

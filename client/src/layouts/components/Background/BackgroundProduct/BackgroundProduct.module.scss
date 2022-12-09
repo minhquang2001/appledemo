@@ -36,3 +36,9 @@
 .slideshowDots {
     text-align: center;
 }
+@media (max-width: 739px){
+    .slideshowDot {
+        height: 6px;
+        width: 6px;
+    }
+}

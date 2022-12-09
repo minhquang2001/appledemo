@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 // import { buyProduct } from "./actions/action";
 // import { connect } from "react-redux";
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { addToCart } from './redux/cartSlice';
 
 import * as singleApi from '~/services/singleApi'
@@ -51,15 +51,14 @@ function SingleProduct() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
-    const cart = useSelector((state) => state.cart);
-    console.log(cart);
+    // const cart = useSelector((state) => state.cart);
+    // console.log(cart);
     const dispatch = useDispatch();
 
     // get path
     const location = useLocation();
     const productId = location.pathname.split('/')[2];
-    const path = location.pathname;
-    console.log(productId, path);
+    // console.log(productId, path);
 
     //fetch api product
     useEffect(() => {
@@ -73,7 +72,7 @@ function SingleProduct() {
             }
 
             else {
-                console.log(result.data);
+                // console.log(result.data);
                 setData(true);
                 setIsLoading(false)
                 setProduct(result.data);
@@ -81,13 +80,11 @@ function SingleProduct() {
                 setId(result.data.id);
                 setProductDetail(result.data.product_details);
                 var dataFirst = result.data.product_details[0];
-                console.log(dataFirst)
+                // console.log(dataFirst)
                 var checkRam = dataFirst.ram !== undefined ? `${dataFirst.ram}` : undefined;
                 var checkStorage = dataFirst.storage !== undefined ? `${dataFirst.storage}` : undefined;
                 var checkColor = dataFirst.color !== undefined ? `${dataFirst.color}` : undefined;
                 var checkScreenSize = dataFirst['screen-size'] !== undefined ? `${dataFirst['screen-size']}` : undefined;
-
-
                 setRamValue(checkRam);
                 setPrice(dataFirst.price);
                 setStorageValue(checkStorage);
@@ -98,35 +95,6 @@ function SingleProduct() {
         };
 
         fetchApi();
-        // fetch(`https://606a-2001-ee0-5200-4c40-c534-535f-6193-e620.ngrok.io/v1/groupproduct/${productId}`)
-        //     .then((res) => {
-        //         if (!res.ok) {
-        //             throw Error('could not fetch the data for that resource');
-        //         }
-        //         return res.json();
-        //     })
-
-        //     .then((data) => {
-        //         setData(true);
-        //         setIsLoading(false)
-        //         setProduct(data.data);
-
-        //         setName(data.data.name);
-        //         setId(data.data.id);
-        //         setProductDetail(data.data.product_details);
-        //         var dataFirst = data.data.product_details[0];
-        //         console.log(dataFirst)
-        //         var checkRam = dataFirst.ram !== undefined ? `${dataFirst.ram}` : undefined;
-        //         setRamValue(checkRam);
-        //         setPrice(dataFirst.price);
-        //         setStorageValue(dataFirst.storage);
-        //         setImage(dataFirst.image);
-        //         setColorValue(dataFirst.color);
-        //     })
-        //     .catch((err) => {
-        //         setIsLoading(false)
-        //         setError(err.message);
-        //     });
     }, [productId]);
     const product_current = {
         id: id,
@@ -139,7 +107,7 @@ function SingleProduct() {
         storage: storageValue,
         screenSize: screenSizeValue,
     };
-    console.log(product_current);
+    // console.log(product_current);
     //handle option
     const findColor = (color) => {
         setColorValue(color);
@@ -153,7 +121,7 @@ function SingleProduct() {
     const findScreenSize = (screenSize) => {
         setScreenSizeValue(screenSize);
     };
-    console.log(product)
+    // console.log(product)
     // console.log(productDetail[0].options[0])
     // handle render when choose option
     useLayoutEffect(() => {
@@ -166,7 +134,7 @@ function SingleProduct() {
                 var screenSize = screenSizeValue === undefined ? screenSizeValue : `${screenSizeValue}`;
                 return item.ram === ram && item.color === color && item.storage === storage && item['screen-size'] === screenSize;
             });
-        console.log(target)
+        // console.log(target)
         // var changeName = target !== undefined ? target.name : name;
         var changeId = target !== undefined ? target.id : idProduct;
         var changeImage = target !== undefined ? target.image : image;
@@ -184,6 +152,7 @@ function SingleProduct() {
     };
     const priceString = getText(price.toLocaleString().concat('đ'));
 
+    // console.log(color, colorValue)
     return (
         <>
             {error && <NotFound />}
@@ -207,8 +176,9 @@ function SingleProduct() {
                                             <div key={idx}>
                                                 {option.key === 'storage' ? (
                                                     <div className={cx('wrap-storage')}>
-                                                        <div className={cx('storage-heading')}>Chọn {option.key}</div>
+                                                        <div className={cx('storage-heading')}>Chọn {option.key}: {storageValue}</div>
                                                         <div className={cx('wrap-option')}>
+                                                            <div className={cx('row-storage')}>
                                                             {option.value.map((value, idx) => (
                                                                 <div
                                                                     className={cx(
@@ -222,6 +192,7 @@ function SingleProduct() {
                                                                     {value}
                                                                 </div>
                                                             ))}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 ) : (
@@ -236,7 +207,7 @@ function SingleProduct() {
                                             <div key={idx}>
                                                 {option.key === 'screen-size' ? (
                                                     <div className={cx('wrap-storage')}>
-                                                        <div className={cx('storage-heading')}>Chọn kích thước màn hình</div>
+                                                        <div className={cx('storage-heading')}>Chọn kích thước màn hình: {screenSizeValue}</div>
                                                         <div className={cx('wrap-option')}>
                                                             {option.value.map((value, idx) => (
                                                                 <div
@@ -265,7 +236,7 @@ function SingleProduct() {
                                             <div key={idx}>
                                                 {option.key === 'ram' ? (
                                                     <div className={cx('wrap-storage')}>
-                                                        <div className={cx('storage-heading')}>Chọn {option.key}</div>
+                                                        <div className={cx('storage-heading')}>Chọn {option.key}: {ramValue}</div>
                                                         <div className={cx('wrap-option')}>
                                                             {option.value.map((value, idx) => (
                                                                 <div
@@ -292,11 +263,13 @@ function SingleProduct() {
                                     {product.options &&
                                         product.options.map((option, idx) => (
                                             <div key={idx}>
-                                                {option.key === 'color' ? (
+                                                {option.key === 'color' ? 
+                                                (
                                                     <div className={cx('wrap-color')}>
-                                                        <div className={cx('heading-color')}>Chọn {option.key}</div>
+                                                        <div className={cx('heading-color')}>Chọn {option.key}: {colorValue}</div>
                                                         <div className={cx('option-color')}>
-                                                            {option.value.map((value, idx) => (
+                                                            {option.value.map((value, idx) => 
+                                                            (
                                                                 <div
                                                                     className={cx(
                                                                         'space',
@@ -306,9 +279,15 @@ function SingleProduct() {
                                                                     value={value}
                                                                     onClick={() => findColor(value)}
                                                                 >
+                                                                    
                                                                     <div
                                                                         className={cx('radio-color')}
-                                                                        style={{ backgroundColor: value }}
+                                                                        style={{ 
+                                                                            backgroundColor: {
+                                                                            value,
+                                                                            }
+                                                                        
+                                                                        }}
                                                                     ></div>
                                                                 </div>
                                                             ))}
@@ -342,12 +321,12 @@ function SingleProduct() {
 
                                     <div className={cx('wrap-option-information')}>
                                         {/* {product.services && product.services.map((service, index) =>
-                  (
-                    <div className={cx('wrap-content')} key={index}>
-                      <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
-                      <p className={cx('content')}>{service}</p>
-                    </div>
-                  ))} */}
+                                            (
+                                              <div className={cx('wrap-content')} key={index}>
+                                                <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
+                                                <p className={cx('content')}>{service}</p>
+                                              </div>
+                                            ))} */}
                                         <div className={cx('wrap-content')}>
                                             <FontAwesomeIcon icon={faCircleCheck} className={cx('icon-check')} />
                                             <p className={cx('content')}>

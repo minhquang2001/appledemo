@@ -14,6 +14,8 @@ const routes = {
     macs: '/macs/:id',
     watchs: '/watchs/:id',
     loudspeakers: '/loudspeakers/:id',
+    search: '/search/:id',
+    cart: '/cart/:id',
 };
 
 export default routes;

@@ -1,4 +1,4 @@
-import httpRequest from "~/utils/httpResquest";
+import httpRequest from "~/utils/httpRequest";
 
 export const singleApi = async (id) => {
     try {

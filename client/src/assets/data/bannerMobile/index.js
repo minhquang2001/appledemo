@@ -1,1 +1,1 @@
-export {bannerHomeMobile} from './bannerMobile'
+export {bannerHomeMobile, bannerIpadsMobile, bannerIphonesMobile, bannerLoudSpeakersMobile, bannerMacsMobile, bannerWatchsMobile} from './bannerMobile'

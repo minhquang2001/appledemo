@@ -39,7 +39,10 @@
             .wrap-option {
                 display: flex;
                 margin-top: 16px;
-
+                .row-storage {
+                    display: flex;
+                    flex-wrap: wrap;
+                }
                 .option {
                     background-color: #fff;
                     padding: 8px 24px;
@@ -48,6 +51,7 @@
                     border-radius: 8px;
                     cursor: pointer;
                     transition: border .2s linear;
+                    margin: 0 12px 20px 0;
 
                     &:hover {
                         border: 1px solid var(--primary);
@@ -59,8 +63,11 @@
                     border: 1px solid var(--primary);
                 }
 
-                .option+.option {
-                    margin-left: 16px;
+                
+                @media (max-width: '739px') {
+                    .option {
+                        padding: 8px 16px;
+                    }
                 }
             }
         }

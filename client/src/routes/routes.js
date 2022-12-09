@@ -46,9 +46,8 @@ const publicRoutes = [
     { path: config.routes.macs, component: SingleProduct, layout: HeaderProduct},
     { path: config.routes.watchs, component: SingleProduct, layout: HeaderProduct},
     { path: config.routes.loudspeakers, component: SingleProduct, layout: HeaderProduct},
-
-
-
+    { path: config.routes.search, component: SingleProduct, layout: HeaderProduct},
+    { path: config.routes.cart, component: SingleProduct, layout: HeaderProduct},
 ];
 
 const privateRoutes = [];

@@ -29,7 +29,7 @@ function CheckOut() {
         note: null,
         listProducts: arrayListProduct
     });
-    console.log(dataCart)
+    // console.log(dataCart)
     const [error, setError] = useState(false);
 
     const navigate = useNavigate();
@@ -90,7 +90,7 @@ function CheckOut() {
                                                     spellCheck="false"
                                                     className={cx('input-small')}
                                                     placeholder="Số điện thoại"
-                                                    name="phone"
+                                                    name="numberPhone"
                                                     onChange={handleChange}
                                                 />
                                             </div>

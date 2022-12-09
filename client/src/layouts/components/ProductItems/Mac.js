@@ -20,7 +20,7 @@ function Mac() {
                 setData(data.data)
                 setLoading(false)
             })
-    })
+    }, [])
     const dataSlice = data.slice(0, 4)
     return (
         <>
